@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>System Administrator Complete Guide</title>
+<style>
+  :root {
+    --bg: #f4f8f6; --card-bg: #ffffff; --text: #1b2420; --muted: #5a6c63;
+    --accent: #1a7a5e; --accent-soft: #e3f3ec; --border: #dfe8e3;
+    --code-bg: #edf5f1; --shadow: rgba(20,40,30,0.06);
+    box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
+    --bg: #0f1a16; --card-bg: #16211c; --text: #e6f0ea; --muted: #94a89d;
+    --accent: #4fd9a8; --accent-soft: #1b2e26; --border: #26382f;
+    --code-bg: #1d2f27; --shadow: rgba(0,0,0,0.4);
+  } }
+  :root[data-theme="dark"] {
+    --bg: #0f1a16; --card-bg: #16211c; --text: #e6f0ea; --muted: #94a89d;
+    --accent: #4fd9a8; --accent-soft: #1b2e26; --border: #26382f;
+    --code-bg: #1d2f27; --shadow: rgba(0,0,0,0.4);
+  }
+  html { scroll-padding-top: 80px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+  header.top { position:sticky; top:0; top:env(safe-area-inset-top,0px); z-index:20; background:var(--card-bg); border-bottom:1px solid var(--border); padding:14px 20px calc(14px + env(safe-area-inset-top,0px)); box-shadow:0 2px 10px var(--shadow); }
+  header.top h1 { margin:0; font-size:1.05rem; color:var(--accent); }
+  header.top p { margin:2px 0 0; font-size:0.8rem; color:var(--muted); }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 16px 80px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:20px 20px 24px; margin-bottom:20px; box-shadow:0 2px 10px var(--shadow); }
+  .index-list { list-style:none; padding:0; margin:12px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:480px) { .index-list { grid-template-columns:1fr; } }
+  .index-list a { display:block; padding:10px 12px; border-radius:10px; background:var(--accent-soft); color:var(--text); text-decoration:none; font-size:0.9rem; border:1px solid transparent; }
+  .index-list a:hover { border-color:var(--accent); }
+  .index-list .num { color:var(--accent); font-weight:700; margin-right:6px; }
+  .tag { display:inline-block; font-size:0.7rem; font-weight:800; padding:2px 8px; border-radius:12px; margin-left:8px; vertical-align:middle; }
+  .tag.win { background:#dbeafe; color:#1e40af; }
+  .tag.lin { background:#fde68a; color:#7c4a03; }
+  :root[data-theme="dark"] .tag.win, :root:not([data-theme="light"]) .tag.win { background:#1e3a5f; color:#93c5fd; }
+  :root[data-theme="dark"] .tag.lin, :root:not([data-theme="light"]) .tag.lin { background:#4a3a10; color:#fcd34d; }
+  h2.sec { color:var(--accent); border-bottom:2px solid var(--accent-soft); padding-bottom:8px; margin-top:0; font-size:1.1rem; scroll-margin-top:80px; }
+  h3 { font-size:0.95rem; margin:16px 0 6px; color:var(--text); }
+  h3.label { text-transform:uppercase; letter-spacing:.04em; font-size:0.75rem; color:var(--muted); margin:18px 0 6px; font-weight:700; }
+  p { margin:6px 0; }
+  ul,ol { margin:6px 0; padding-left:22px; } li{ margin:3px 0; }
+  code { background:var(--code-bg); padding:2px 7px; border-radius:6px; font-size:0.86em; font-family:"SFMono-Regular",Consolas,Menlo,monospace; color:var(--accent); }
+  pre { background:var(--code-bg); padding:12px 14px; border-radius:10px; overflow-x:auto; font-size:0.84rem; font-family:"SFMono-Regular",Consolas,Menlo,monospace; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85rem; display:block; overflow-x:auto; white-space:nowrap; }
+  table thead { background:var(--accent-soft); }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+  th { color:var(--accent); font-weight:700; }
+  .remember { background:var(--code-bg); border:1px dashed var(--accent); border-radius:10px; padding:10px 14px; margin:10px 0; font-weight:700; font-size:0.88rem; }
+  .backtop { display:inline-block; margin-top:14px; font-size:0.8rem; color:var(--accent); text-decoration:none; border:1px solid var(--border); padding:5px 12px; border-radius:20px; }
+  hr.sep { border:none; border-top:1px solid var(--border); margin:24px 0; }
+  footer { text-align:center; color:var(--muted); font-size:0.8rem; padding:18px 0 10px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>🖥️ System Administrator Complete Guide</h1>
+  <p>Windows + Linux — sab commands aur concepts ek jagah</p>
+</header>
+<div class="wrap">
+
+<section class="card" id="top">
+  <h2 class="sec">📌 Index</h2>
+  <ul class="index-list">
+    <li><a href="#s1"><span class="num">1.</span>Sysadmin Role Overview</a></li>
+    <li><a href="#s2"><span class="num">2.</span>Windows CMD Commands</a></li>
+    <li><a href="#s3"><span class="num">3.</span>PowerShell Commands</a></li>
+    <li><a href="#s4"><span class="num">4.</span>Active Directory</a></li>
+    <li><a href="#s5"><span class="num">5.</span>DNS & DHCP (Windows)</a></li>
+    <li><a href="#s6"><span class="num">6.</span>Group Policy (GPO)</a></li>
+    <li><a href="#s7"><span class="num">7.</span>Windows File/Disk/Print</a></li>
+    <li><a href="#s8"><span class="num">8.</span>Linux Basics & File System</a></li>
+    <li><a href="#s9"><span class="num">9.</span>Linux Users & Permissions</a></li>
+    <li><a href="#s10"><span class="num">10.</span>Linux Services (systemctl)</a></li>
+    <li><a href="#s11"><span class="num">11.</span>Linux Networking Commands</a></li>
+    <li><a href="#s12"><span class="num">12.</span>Linux Package Management</a></li>
+    <li><a href="#s13"><span class="num">13.</span>Linux Disk & Storage</a></li>
+    <li><a href="#s14"><span class="num">14.</span>Backup & Scheduling</a></li>
+    <li><a href="#s15"><span class="num">15.</span>Virtualization Basics</a></li>
+    <li><a href="#s16"><span class="num">16.</span>Monitoring & Logs</a></li>
+    <li><a href="#s17"><span class="num">17.</span>Security (Firewall/Patching)</a></li>
+    <li><a href="#s18"><span class="num">18.</span>Full Command Cheat Sheet</a></li>
+  </ul>
+</section>
+
+<!-- 1 -->
+<section class="card" id="s1">
+  <h2 class="sec">1. System Administrator Role Overview</h2>
+  <p>Ek System Administrator ka kaam hota hai company ke IT infrastructure ko manage, secure aur available rakhna:</p>
+  <ul>
+    <li><b>Servers</b> — Windows Server / Linux servers install, configure, maintain</li>
+    <li><b>Users & Access</b> — Active Directory, permissions, groups</li>
+    <li><b>Network Services</b> — DNS, DHCP, File sharing, Print services</li>
+    <li><b>Backup & Recovery</b> — data protection, disaster recovery</li>
+    <li><b>Security</b> — patching, firewall, antivirus, monitoring</li>
+    <li><b>Virtualization</b> — VMs, Hyper-V, VMware</li>
+    <li><b>Automation</b> — scripting (PowerShell/Bash) se repetitive tasks automate karna</li>
+  </ul>
+  <div class="remember">Golden Rule: Document everything, test changes before production, always keep verified backups.</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 2 -->
+<section class="card" id="s2">
+  <h2 class="sec">2. Windows CMD Commands <span class="tag win">CMD</span></h2>
+  <h3 class="label">Networking</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>ipconfig /all</code></td><td>Full network config dikhata hai</td></tr>
+      <tr><td><code>ipconfig /release</code> & <code>/renew</code></td><td>DHCP IP release/renew</td></tr>
+      <tr><td><code>ipconfig /flushdns</code></td><td>DNS cache clear</td></tr>
+      <tr><td><code>ping &lt;host&gt;</code></td><td>Connectivity test</td></tr>
+      <tr><td><code>tracert &lt;host&gt;</code></td><td>Path trace</td></tr>
+      <tr><td><code>nslookup &lt;domain&gt;</code></td><td>DNS query test</td></tr>
+      <tr><td><code>netstat -ano</code></td><td>Active connections + PID</td></tr>
+      <tr><td><code>arp -a</code></td><td>ARP table</td></tr>
+      <tr><td><code>route print</code></td><td>Routing table</td></tr>
+      <tr><td><code>netsh wlan show profiles</code></td><td>Saved Wi-Fi profiles</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">System & Processes</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>tasklist</code></td><td>Running processes list</td></tr>
+      <tr><td><code>taskkill /PID 1234 /F</code></td><td>Process force kill</td></tr>
+      <tr><td><code>systeminfo</code></td><td>Full system details</td></tr>
+      <tr><td><code>sfc /scannow</code></td><td>System files corruption scan+repair</td></tr>
+      <tr><td><code>chkdsk C: /f</code></td><td>Disk error check + fix</td></tr>
+      <tr><td><code>dism /online /cleanup-image /restorehealth</code></td><td>Windows image repair</td></tr>
+      <tr><td><code>shutdown /r /t 0</code></td><td>Immediate restart</td></tr>
+      <tr><td><code>gpupdate /force</code></td><td>Group policy immediately apply</td></tr>
+      <tr><td><code>gpresult /r</code></td><td>Applied GPO summary</td></tr>
+      <tr><td><code>wmic diskdrive get status</code></td><td>Disk health status</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Users & Files</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>net user</code></td><td>Local users list</td></tr>
+      <tr><td><code>net user USERNAME PASSWORD /add</code></td><td>User create</td></tr>
+      <tr><td><code>net localgroup administrators USERNAME /add</code></td><td>User ko admin group mein add</td></tr>
+      <tr><td><code>net share</code></td><td>Shared folders list</td></tr>
+      <tr><td><code>net use Z: \\server\share</code></td><td>Network drive map</td></tr>
+      <tr><td><code>icacls file.txt /grant USER:F</code></td><td>File permission grant (full control)</td></tr>
+      <tr><td><code>robocopy SRC DEST /MIR</code></td><td>Reliable folder mirror/copy</td></tr>
+      <tr><td><code>xcopy SRC DEST /E /H</code></td><td>Files/folders copy including hidden</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 3 -->
+<section class="card" id="s3">
+  <h2 class="sec">3. PowerShell Commands <span class="tag win">PowerShell</span></h2>
+  <h3 class="label">System Info</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>Get-Process</code></td><td>Running processes</td></tr>
+      <tr><td><code>Stop-Process -Name notepad -Force</code></td><td>Process stop karo</td></tr>
+      <tr><td><code>Get-Service</code></td><td>All services status</td></tr>
+      <tr><td><code>Restart-Service SPOOLER</code></td><td>Service restart</td></tr>
+      <tr><td><code>Get-EventLog -LogName System -Newest 20</code></td><td>Latest system logs</td></tr>
+      <tr><td><code>Get-ComputerInfo</code></td><td>Full computer details</td></tr>
+      <tr><td><code>Get-Disk</code> / <code>Get-Volume</code></td><td>Disk/volume info</td></tr>
+      <tr><td><code>Test-Connection google.com</code></td><td>Ping (PowerShell version)</td></tr>
+      <tr><td><code>Test-NetConnection -Port 443</code></td><td>Specific port test</td></tr>
+      <tr><td><code>Get-NetIPConfiguration</code></td><td>Network config</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Active Directory Cmdlets (RSAT module)</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>Get-ADUser -Filter *</code></td><td>Sab AD users list</td></tr>
+      <tr><td><code>New-ADUser -Name "John" -SamAccountName john</code></td><td>New user create</td></tr>
+      <tr><td><code>Set-ADUser john -Enabled $true</code></td><td>User enable karo</td></tr>
+      <tr><td><code>Unlock-ADAccount -Identity john</code></td><td>Locked account unlock</td></tr>
+      <tr><td><code>Get-ADGroupMember "IT Team"</code></td><td>Group members list</td></tr>
+      <tr><td><code>Add-ADGroupMember -Identity IT -Members john</code></td><td>User ko group mein add</td></tr>
+      <tr><td><code>Remove-ADUser john</code></td><td>User delete</td></tr>
+      <tr><td><code>Get-ADComputer -Filter *</code></td><td>Domain computers list</td></tr>
+      <tr><td><code>Search-ADAccount -LockedOut</code></td><td>Sab locked accounts dhundo</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Remote & Automation</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>Enter-PSSession -ComputerName SRV01</code></td><td>Remote server session</td></tr>
+      <tr><td><code>Invoke-Command -ComputerName SRV01 -ScriptBlock {Get-Service}</code></td><td>Remote command run</td></tr>
+      <tr><td><code>Get-ExecutionPolicy</code> / <code>Set-ExecutionPolicy RemoteSigned</code></td><td>Script execution policy</td></tr>
+      <tr><td><code>Export-Csv report.csv -NoTypeInformation</code></td><td>Data ko CSV mein export</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 4 -->
+<section class="card" id="s4">
+  <h2 class="sec">4. Active Directory (AD DS) Concepts <span class="tag win">Windows Server</span></h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>Domain</td><td>Logical group of network objects (users, computers) — central management</td></tr>
+      <tr><td>Domain Controller (DC)</td><td>Server jo AD database (NTDS.dit) host karta hai aur authentication karta hai</td></tr>
+      <tr><td>OU (Organizational Unit)</td><td>Users/computers ko organize karne ka container — GPO apply karne ke liye</td></tr>
+      <tr><td>FSMO Roles</td><td>5 special DC roles: Schema Master, Domain Naming Master, RID Master, PDC Emulator, Infrastructure Master</td></tr>
+      <tr><td>Forest / Tree</td><td>Multiple domains ka collection (trust relationship ke saath)</td></tr>
+      <tr><td>Replication</td><td>Multiple DCs ke beech data sync (multi-master)</td></tr>
+      <tr><td>Trust</td><td>Ek domain doosre domain ke users ko access allow karta hai</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Common AD Tasks</h3>
+  <ul>
+    <li>New user/computer create, disable, delete</li>
+    <li>Group create (Security vs Distribution)</li>
+    <li>Password policy set (via Default Domain Policy)</li>
+    <li>Account lockout policy configure</li>
+    <li>AD backup — System State backup via <code>wbadmin</code></li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 5 -->
+<section class="card" id="s5">
+  <h2 class="sec">5. DNS & DHCP (Windows Server) <span class="tag win">Windows Server</span></h2>
+  <h3 class="label">DNS</h3>
+  <table>
+    <thead><tr><th>Record Type</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>Hostname → IPv4 address</td></tr>
+      <tr><td>AAAA</td><td>Hostname → IPv6 address</td></tr>
+      <tr><td>CNAME</td><td>Alias (one name to another name)</td></tr>
+      <tr><td>MX</td><td>Mail server record</td></tr>
+      <tr><td>PTR</td><td>IP → Hostname (reverse lookup)</td></tr>
+      <tr><td>NS</td><td>Name server record</td></tr>
+      <tr><td>SRV</td><td>Service location (e.g. AD services)</td></tr>
+    </tbody>
+  </table>
+  <pre>Get-DnsServerResourceRecord -ZoneName "company.local"
+Add-DnsServerResourceRecordA -Name "srv1" -ZoneName "company.local" -IPv4Address "192.168.1.10"
+Clear-DnsServerCache</pre>
+  <h3 class="label">DHCP</h3>
+  <p>DORA process: <b>D</b>iscover → <b>O</b>ffer → <b>R</b>equest → <b>A</b>cknowledge</p>
+  <pre>Add-DhcpServerv4Scope -Name "LAN" -StartRange 192.168.1.50 -EndRange 192.168.1.150 -SubnetMask 255.255.255.0
+Get-DhcpServerv4Lease -ScopeId 192.168.1.0
+Set-DhcpServerv4OptionValue -DnsServer 8.8.8.8 -Router 192.168.1.1</pre>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 6 -->
+<section class="card" id="s6">
+  <h2 class="sec">6. Group Policy (GPO) <span class="tag win">Windows Server</span></h2>
+  <p>GPO se centrally settings/restrictions push ki jaati hain users/computers par (OU level par apply hoti hain).</p>
+  <ul>
+    <li>Password policy, screen lock timeout</li>
+    <li>Software deployment/restriction</li>
+    <li>Drive mapping, printer deployment</li>
+    <li>Security settings, firewall rules</li>
+  </ul>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>gpupdate /force</code></td><td>Policy turant apply karo (client side)</td></tr>
+      <tr><td><code>gpresult /h report.html</code></td><td>Applied GPOs ka detailed report</td></tr>
+      <tr><td><code>Get-GPO -All</code></td><td>Sab GPOs list (PowerShell)</td></tr>
+      <tr><td><code>New-GPO -Name "Restrict-USB"</code></td><td>New GPO create</td></tr>
+      <tr><td><code>New-GPLink -Name "Restrict-USB" -Target "OU=Sales,DC=company,DC=local"</code></td><td>GPO ko OU se link karo</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">GPO Order of Precedence: Local → Site → Domain → OU (last applied wins = LSDOU)</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 7 -->
+<section class="card" id="s7">
+  <h2 class="sec">7. Windows File / Disk / Print Services <span class="tag win">Windows Server</span></h2>
+  <h3 class="label">File Server</h3>
+  <ul>
+    <li>Shared folders + NTFS permissions (Read, Write, Modify, Full Control)</li>
+    <li>DFS (Distributed File System) — multiple servers ke shares ko ek namespace mein combine karna</li>
+    <li>Quotas & File Screening (FSRM — File Server Resource Manager)</li>
+  </ul>
+  <h3 class="label">Disk Management</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>diskpart</code></td><td>Disk partitioning utility</td></tr>
+      <tr><td><code>Get-PhysicalDisk</code></td><td>Physical disk health (PowerShell)</td></tr>
+      <tr><td><code>Get-Volume</code></td><td>Volume list + free space</td></tr>
+      <tr><td><code>Resize-Partition</code></td><td>Partition resize</td></tr>
+      <tr><td><code>New-StoragePool</code></td><td>Storage Spaces pool create (software RAID)</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Print Server</h3>
+  <p>Printers centrally share karke GPO se deploy kiye jaate hain — driver management aur queue monitoring Print Management console se hota hai.</p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 8 -->
+<section class="card" id="s8">
+  <h2 class="sec">8. Linux Basics & File System <span class="tag lin">Linux</span></h2>
+  <h3 class="label">Directory Structure</h3>
+  <table>
+    <thead><tr><th>Path</th><th>Contains</th></tr></thead>
+    <tbody>
+      <tr><td><code>/etc</code></td><td>Configuration files</td></tr>
+      <tr><td><code>/var</code></td><td>Logs, mail, variable data</td></tr>
+      <tr><td><code>/home</code></td><td>User home directories</td></tr>
+      <tr><td><code>/root</code></td><td>Root user's home</td></tr>
+      <tr><td><code>/bin</code>, <code>/usr/bin</code></td><td>Executable binaries</td></tr>
+      <tr><td><code>/dev</code></td><td>Device files</td></tr>
+      <tr><td><code>/proc</code></td><td>Runtime process/kernel info</td></tr>
+      <tr><td><code>/opt</code></td><td>Optional/third-party software</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Basic Commands</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>pwd</code></td><td>Current directory dikhao</td></tr>
+      <tr><td><code>ls -la</code></td><td>Files list (hidden bhi, details ke saath)</td></tr>
+      <tr><td><code>cd /path</code></td><td>Directory change</td></tr>
+      <tr><td><code>cp src dest</code></td><td>File/folder copy (<code>-r</code> for recursive)</td></tr>
+      <tr><td><code>mv src dest</code></td><td>Move/rename</td></tr>
+      <tr><td><code>rm -rf folder</code></td><td>Force delete (careful!)</td></tr>
+      <tr><td><code>mkdir -p path</code></td><td>Directory create (nested)</td></tr>
+      <tr><td><code>cat file</code></td><td>File content dikhao</td></tr>
+      <tr><td><code>tail -f /var/log/syslog</code></td><td>Live log follow karo</td></tr>
+      <tr><td><code>grep "error" file.log</code></td><td>Pattern search</td></tr>
+      <tr><td><code>find / -name "*.conf"</code></td><td>File search</td></tr>
+      <tr><td><code>man command</code></td><td>Command manual/help</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 9 -->
+<section class="card" id="s9">
+  <h2 class="sec">9. Linux Users & Permissions <span class="tag lin">Linux</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>useradd -m john</code></td><td>New user create (home dir ke saath)</td></tr>
+      <tr><td><code>passwd john</code></td><td>Password set</td></tr>
+      <tr><td><code>usermod -aG sudo john</code></td><td>User ko sudo group mein add</td></tr>
+      <tr><td><code>userdel -r john</code></td><td>User + home directory delete</td></tr>
+      <tr><td><code>groupadd devops</code></td><td>New group create</td></tr>
+      <tr><td><code>id john</code></td><td>User ke UID/GID/groups dikhao</td></tr>
+      <tr><td><code>whoami</code></td><td>Current logged-in user</td></tr>
+      <tr><td><code>su - john</code></td><td>User switch karo</td></tr>
+      <tr><td><code>sudo command</code></td><td>Admin privilege se command run karo</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">File Permissions</h3>
+  <p>Format: <code>rwxrwxrwx</code> = Owner / Group / Others (r=read=4, w=write=2, x=execute=1)</p>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>chmod 755 file.sh</code></td><td>Permission set (owner=rwx, group/others=r-x)</td></tr>
+      <tr><td><code>chmod +x script.sh</code></td><td>Execute permission add</td></tr>
+      <tr><td><code>chown john:devops file</code></td><td>Owner + group change</td></tr>
+      <tr><td><code>ls -l</code></td><td>Current permissions dekho</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 10 -->
+<section class="card" id="s10">
+  <h2 class="sec">10. Linux Services (systemctl) <span class="tag lin">Linux</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>systemctl status nginx</code></td><td>Service status check</td></tr>
+      <tr><td><code>systemctl start nginx</code></td><td>Service start</td></tr>
+      <tr><td><code>systemctl stop nginx</code></td><td>Service stop</td></tr>
+      <tr><td><code>systemctl restart nginx</code></td><td>Service restart</td></tr>
+      <tr><td><code>systemctl enable nginx</code></td><td>Boot time par auto-start</td></tr>
+      <tr><td><code>systemctl disable nginx</code></td><td>Auto-start band karo</td></tr>
+      <tr><td><code>systemctl list-units --type=service</code></td><td>Sab running services list</td></tr>
+      <tr><td><code>journalctl -u nginx -f</code></td><td>Live service logs</td></tr>
+      <tr><td><code>reboot</code> / <code>shutdown -h now</code></td><td>System restart/shutdown</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 11 -->
+<section class="card" id="s11">
+  <h2 class="sec">11. Linux Networking Commands <span class="tag lin">Linux</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>ip a</code> (or <code>ip addr</code>)</td><td>IP addresses dikhao</td></tr>
+      <tr><td><code>ip link set eth0 up/down</code></td><td>Interface enable/disable</td></tr>
+      <tr><td><code>ip route</code></td><td>Routing table</td></tr>
+      <tr><td><code>ping host</code></td><td>Connectivity test</td></tr>
+      <tr><td><code>traceroute host</code></td><td>Path trace</td></tr>
+      <tr><td><code>ss -tulnp</code></td><td>Open ports + listening services</td></tr>
+      <tr><td><code>netstat -tulnp</code></td><td>(legacy) same as above</td></tr>
+      <tr><td><code>curl -I https://site.com</code></td><td>HTTP headers check</td></tr>
+      <tr><td><code>wget URL</code></td><td>File download</td></tr>
+      <tr><td><code>hostname -I</code></td><td>Server ka IP address</td></tr>
+      <tr><td><code>nmcli device status</code></td><td>NetworkManager se connections</td></tr>
+      <tr><td><code>dig domain.com</code></td><td>DNS lookup (detailed)</td></tr>
+      <tr><td><code>scp file user@host:/path</code></td><td>Secure copy remote server par</td></tr>
+      <tr><td><code>ssh user@host</code></td><td>Remote login</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 12 -->
+<section class="card" id="s12">
+  <h2 class="sec">12. Linux Package Management <span class="tag lin">Linux</span></h2>
+  <h3 class="label">Debian/Ubuntu (APT)</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>apt update</code></td><td>Package list refresh</td></tr>
+      <tr><td><code>apt upgrade</code></td><td>Installed packages update</td></tr>
+      <tr><td><code>apt install nginx</code></td><td>Package install</td></tr>
+      <tr><td><code>apt remove nginx</code></td><td>Package remove</td></tr>
+      <tr><td><code>apt list --installed</code></td><td>Installed packages list</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">RHEL/CentOS (YUM/DNF)</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>yum update</code> / <code>dnf update</code></td><td>System update</td></tr>
+      <tr><td><code>yum install httpd</code></td><td>Package install</td></tr>
+      <tr><td><code>yum remove httpd</code></td><td>Package remove</td></tr>
+      <tr><td><code>rpm -qa</code></td><td>Installed RPM packages list</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 13 -->
+<section class="card" id="s13">
+  <h2 class="sec">13. Linux Disk & Storage <span class="tag lin">Linux</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>df -h</code></td><td>Disk space usage (human-readable)</td></tr>
+      <tr><td><code>du -sh /var/log</code></td><td>Folder size check</td></tr>
+      <tr><td><code>lsblk</code></td><td>Block devices/partitions list</td></tr>
+      <tr><td><code>fdisk -l</code></td><td>Disk partitions detail</td></tr>
+      <tr><td><code>mount /dev/sdb1 /mnt/data</code></td><td>Partition mount karo</td></tr>
+      <tr><td><code>umount /mnt/data</code></td><td>Unmount</td></tr>
+      <tr><td><code>mkfs.ext4 /dev/sdb1</code></td><td>Filesystem format</td></tr>
+      <tr><td><code>cat /etc/fstab</code></td><td>Auto-mount config</td></tr>
+      <tr><td><code>vgs</code>, <code>lvs</code>, <code>pvs</code></td><td>LVM: Volume group / logical volume / physical volume info</td></tr>
+      <tr><td><code>lvextend -L +5G /dev/vg0/lv0</code></td><td>Logical volume size badhao</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 14 -->
+<section class="card" id="s14">
+  <h2 class="sec">14. Backup & Scheduling</h2>
+  <h3 class="label">Windows Backup <span class="tag win">Windows</span></h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>wbadmin start backup -backupTarget:E: -include:C:</code></td><td>Full system backup</td></tr>
+      <tr><td><code>wbadmin start systemstatebackup</code></td><td>AD/System state backup</td></tr>
+      <tr><td>Task Scheduler (<code>taskschd.msc</code>)</td><td>Scheduled/recurring tasks GUI</td></tr>
+      <tr><td><code>schtasks /create /sc daily /tn "Backup" /tr script.bat /st 02:00</code></td><td>CLI se scheduled task</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Linux Backup & Cron <span class="tag lin">Linux</span></h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>tar -czvf backup.tar.gz /data</code></td><td>Compressed backup</td></tr>
+      <tr><td><code>rsync -avz /data user@remote:/backup</code></td><td>Efficient incremental sync backup</td></tr>
+      <tr><td><code>crontab -e</code></td><td>Scheduled jobs edit karo</td></tr>
+      <tr><td><code>0 2 * * * /scripts/backup.sh</code></td><td>Cron syntax — roz 2 AM par run</td></tr>
+      <tr><td><code>crontab -l</code></td><td>Scheduled jobs list</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">3-2-1 Backup Rule: 3 copies, 2 different media, 1 offsite — dono OS pe applicable hai</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 15 -->
+<section class="card" id="s15">
+  <h2 class="sec">15. Virtualization Basics</h2>
+  <table>
+    <thead><tr><th>Concept</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>Hypervisor</td><td>Software jo physical hardware par multiple VMs run karta hai</td></tr>
+      <tr><td>Type 1 (Bare-metal)</td><td>Hyper-V, VMware ESXi, KVM — directly hardware par</td></tr>
+      <tr><td>Type 2 (Hosted)</td><td>VirtualBox, VMware Workstation — OS ke upar</td></tr>
+      <tr><td>Snapshot</td><td>VM ki ek point-in-time state save karna</td></tr>
+      <tr><td>vMotion / Live Migration</td><td>Running VM ko bina downtime doosre host par move karna</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Hyper-V PowerShell</h3>
+  <pre>Get-VM
+Start-VM -Name "SRV-Web01"
+New-VM -Name "SRV-Test" -MemoryStartupBytes 2GB -NewVHDPath "C:\VMs\test.vhdx" -NewVHDSizeBytes 40GB</pre>
+  <h3 class="label">Linux KVM</h3>
+  <pre>virsh list --all
+virsh start vm-name
+virsh shutdown vm-name</pre>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 16 -->
+<section class="card" id="s16">
+  <h2 class="sec">16. Monitoring & Logs</h2>
+  <table>
+    <thead><tr><th>Platform</th><th>Command/Tool</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Windows</td><td><code>eventvwr.msc</code></td><td>Event Viewer GUI — System/Application/Security logs</td></tr>
+      <tr><td>Windows</td><td><code>Get-WinEvent -LogName System</code></td><td>Logs PowerShell se</td></tr>
+      <tr><td>Windows</td><td><code>perfmon</code></td><td>Performance Monitor — CPU/RAM/Disk trends</td></tr>
+      <tr><td>Windows</td><td><code>resmon</code></td><td>Resource Monitor</td></tr>
+      <tr><td>Linux</td><td><code>journalctl</code></td><td>Systemd logs</td></tr>
+      <tr><td>Linux</td><td><code>/var/log/syslog</code> or <code>/var/log/messages</code></td><td>General system logs</td></tr>
+      <tr><td>Linux</td><td><code>top</code> / <code>htop</code></td><td>Live CPU/RAM/process monitoring</td></tr>
+      <tr><td>Linux</td><td><code>vmstat 2</code></td><td>System performance stats</td></tr>
+      <tr><td>Linux</td><td><code>iostat</code></td><td>Disk I/O stats</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 17 -->
+<section class="card" id="s17">
+  <h2 class="sec">17. Security (Firewall / Patching)</h2>
+  <h3 class="label">Windows Firewall <span class="tag win">Windows</span></h3>
+  <pre>netsh advfirewall show allprofiles
+netsh advfirewall firewall add rule name="Allow HTTP" dir=in action=allow protocol=TCP localport=80
+New-NetFirewallRule -DisplayName "Allow SSH" -Direction Inbound -Protocol TCP -LocalPort 22 -Action Allow</pre>
+  <h3 class="label">Linux Firewall <span class="tag lin">Linux</span></h3>
+  <pre># firewalld (RHEL/CentOS)
+firewall-cmd --list-all
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --reload
+
+# UFW (Ubuntu)
+ufw status
+ufw allow 22/tcp
+ufw enable
+
+# iptables (legacy)
+iptables -L -n</pre>
+  <h3 class="label">Patch Management</h3>
+  <ul>
+    <li><b>Windows:</b> WSUS (Windows Server Update Services), Windows Update settings, <code>Get-WindowsUpdate</code></li>
+    <li><b>Linux:</b> <code>apt update && apt upgrade</code> / <code>yum update</code> — scheduled patching windows follow karo</li>
+    <li><b>Best Practice:</b> Pehle test/staging environment mein patch apply karo, phir production mein</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 18 -->
+<section class="card" id="s18">
+  <h2 class="sec">18. Full Command Cheat Sheet (Quick Reference)</h2>
+  <table>
+    <thead><tr><th>Task</th><th>Windows</th><th>Linux</th></tr></thead>
+    <tbody>
+      <tr><td>Show IP config</td><td><code>ipconfig /all</code></td><td><code>ip a</code></td></tr>
+      <tr><td>Ping</td><td><code>ping host</code></td><td><code>ping host</code></td></tr>
+      <tr><td>DNS lookup</td><td><code>nslookup domain</code></td><td><code>dig domain</code></td></tr>
+      <tr><td>Open ports</td><td><code>netstat -ano</code></td><td><code>ss -tulnp</code></td></tr>
+      <tr><td>Process list</td><td><code>tasklist</code></td><td><code>ps aux</code></td></tr>
+      <tr><td>Kill process</td><td><code>taskkill /PID x /F</code></td><td><code>kill -9 PID</code></td></tr>
+      <tr><td>Live resource monitor</td><td>Task Manager / <code>resmon</code></td><td><code>top</code> / <code>htop</code></td></tr>
+      <tr><td>Disk usage</td><td><code>chkdsk</code></td><td><code>df -h</code></td></tr>
+      <tr><td>Restart service</td><td><code>Restart-Service NAME</code></td><td><code>systemctl restart NAME</code></td></tr>
+      <tr><td>User create</td><td><code>net user NAME PASS /add</code></td><td><code>useradd -m NAME</code></td></tr>
+      <tr><td>Remote login</td><td>RDP / <code>Enter-PSSession</code></td><td><code>ssh user@host</code></td></tr>
+      <tr><td>Copy files remote</td><td><code>robocopy</code></td><td><code>scp</code> / <code>rsync</code></td></tr>
+      <tr><td>Scheduled task</td><td><code>schtasks</code></td><td><code>crontab -e</code></td></tr>
+      <tr><td>Firewall rule add</td><td><code>netsh advfirewall...</code></td><td><code>ufw allow</code> / <code>firewall-cmd</code></td></tr>
+      <tr><td>Logs view</td><td><code>eventvwr.msc</code></td><td><code>journalctl</code></td></tr>
+      <tr><td>Package install</td><td>—</td><td><code>apt/yum install NAME</code></td></tr>
+      <tr><td>File permission</td><td><code>icacls</code></td><td><code>chmod</code> / <code>chown</code></td></tr>
+      <tr><td>Backup</td><td><code>wbadmin</code></td><td><code>tar</code> / <code>rsync</code></td></tr>
+      <tr><td>System info</td><td><code>systeminfo</code></td><td><code>uname -a</code> / <code>hostnamectl</code></td></tr>
+      <tr><td>Reboot</td><td><code>shutdown /r /t 0</code></td><td><code>reboot</code></td></tr>
+    </tbody>
+  </table>
+  <div class="remember">🎯 Interview Tip: Windows aur Linux dono ke equivalent commands yaad rakho — interviewer aksar "iska Linux mein equivalent kya hai?" poochta hai.</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<footer>System Administrator Complete Guide · All the best! 🖥️</footer>
+</div>
+</body>
+</html>

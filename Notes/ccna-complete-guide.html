@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CCNA Complete Revision Guide</title>
+<style>
+  :root {
+    --bg: #f6f8fb; --card-bg: #ffffff; --text: #1c2430; --muted: #5c6b7a;
+    --accent: #1f6feb; --accent-soft: #e8f0fe; --border: #e3e8ef;
+    --code-bg: #eef2f7; --shadow: rgba(20,30,50,0.06);
+    box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
+    --bg: #0f1420; --card-bg: #161c2c; --text: #e7ecf5; --muted: #97a3b8;
+    --accent: #6fa8ff; --accent-soft: #1c2740; --border: #263049;
+    --code-bg: #1d2740; --shadow: rgba(0,0,0,0.4);
+  } }
+  :root[data-theme="dark"] {
+    --bg: #0f1420; --card-bg: #161c2c; --text: #e7ecf5; --muted: #97a3b8;
+    --accent: #6fa8ff; --accent-soft: #1c2740; --border: #263049;
+    --code-bg: #1d2740; --shadow: rgba(0,0,0,0.4);
+  }
+  html { scroll-padding-top: 80px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+  header.top { position:sticky; top:0; top:env(safe-area-inset-top,0px); z-index:20; background:var(--card-bg); border-bottom:1px solid var(--border); padding:14px 20px calc(14px + env(safe-area-inset-top,0px)); box-shadow:0 2px 10px var(--shadow); }
+  header.top h1 { margin:0; font-size:1.05rem; color:var(--accent); }
+  header.top p { margin:2px 0 0; font-size:0.8rem; color:var(--muted); }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 16px 80px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:20px 20px 24px; margin-bottom:20px; box-shadow:0 2px 10px var(--shadow); }
+  .index-list { list-style:none; padding:0; margin:12px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:480px) { .index-list { grid-template-columns:1fr; } }
+  .index-list a { display:block; padding:10px 12px; border-radius:10px; background:var(--accent-soft); color:var(--text); text-decoration:none; font-size:0.9rem; border:1px solid transparent; }
+  .index-list a:hover { border-color:var(--accent); }
+  .index-list .num { color:var(--accent); font-weight:700; margin-right:6px; }
+  h2.sec { color:var(--accent); border-bottom:2px solid var(--accent-soft); padding-bottom:8px; margin-top:0; font-size:1.1rem; scroll-margin-top:80px; }
+  h3 { font-size:0.95rem; margin:16px 0 6px; color:var(--text); }
+  h3.label { text-transform:uppercase; letter-spacing:.04em; font-size:0.75rem; color:var(--muted); margin:18px 0 6px; font-weight:700; }
+  p { margin:6px 0; }
+  ul,ol { margin:6px 0; padding-left:22px; } li{ margin:3px 0; }
+  code { background:var(--code-bg); padding:2px 7px; border-radius:6px; font-size:0.86em; font-family:"SFMono-Regular",Consolas,Menlo,monospace; color:var(--accent); }
+  pre { background:var(--code-bg); padding:12px 14px; border-radius:10px; overflow-x:auto; font-size:0.84rem; font-family:"SFMono-Regular",Consolas,Menlo,monospace; margin:8px 0; }
+  .flow { background:var(--code-bg); border-left:3px solid var(--accent); padding:10px 14px; border-radius:8px; font-weight:600; font-size:0.9rem; margin:10px 0; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.86rem; display:block; overflow-x:auto; white-space:nowrap; }
+  table thead { background:var(--accent-soft); }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+  th { color:var(--accent); font-weight:700; }
+  td code { white-space:nowrap; }
+  .remember { background:var(--code-bg); border:1px dashed var(--accent); border-radius:10px; padding:10px 14px; margin:10px 0; font-weight:700; font-size:0.88rem; }
+  .backtop { display:inline-block; margin-top:14px; font-size:0.8rem; color:var(--accent); text-decoration:none; border:1px solid var(--border); padding:5px 12px; border-radius:20px; }
+  hr.sep { border:none; border-top:1px solid var(--border); margin:24px 0; }
+  footer { text-align:center; color:var(--muted); font-size:0.8rem; padding:18px 0 10px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>🌐 CCNA Complete Revision Guide</h1>
+  <p>Concepts + Commands — sab ek jagah, index se seedha jump karo</p>
+</header>
+<div class="wrap">
+
+<section class="card" id="top">
+  <h2 class="sec">📌 Index</h2>
+  <ul class="index-list">
+    <li><a href="#s1"><span class="num">1.</span>OSI & TCP/IP Model</a></li>
+    <li><a href="#s2"><span class="num">2.</span>IP Addressing & Subnetting</a></li>
+    <li><a href="#s3"><span class="num">3.</span>Cisco IOS Basics</a></li>
+    <li><a href="#s4"><span class="num">4.</span>Switching: VLAN, Trunk, STP</a></li>
+    <li><a href="#s5"><span class="num">5.</span>EtherChannel & Port Security</a></li>
+    <li><a href="#s6"><span class="num">6.</span>Routing: Static & Dynamic</a></li>
+    <li><a href="#s7"><span class="num">7.</span>OSPF & EIGRP Deep Dive</a></li>
+    <li><a href="#s8"><span class="num">8.</span>Access Control Lists (ACL)</a></li>
+    <li><a href="#s9"><span class="num">9.</span>NAT / PAT</a></li>
+    <li><a href="#s10"><span class="num">10.</span>DHCP & DNS on Cisco</a></li>
+    <li><a href="#s11"><span class="num">11.</span>WAN, VPN & Tunneling</a></li>
+    <li><a href="#s12"><span class="num">12.</span>Wireless (WLAN) Basics</a></li>
+    <li><a href="#s13"><span class="num">13.</span>Network Security Basics</a></li>
+    <li><a href="#s14"><span class="num">14.</span>Automation & Programmability</a></li>
+    <li><a href="#s15"><span class="num">15.</span>Troubleshooting Commands</a></li>
+    <li><a href="#s16"><span class="num">16.</span>Full Command Cheat Sheet</a></li>
+  </ul>
+</section>
+
+<!-- 1 -->
+<section class="card" id="s1">
+  <h2 class="sec">1. OSI Model & TCP/IP Model</h2>
+  <table>
+    <thead><tr><th>Layer #</th><th>OSI Layer</th><th>TCP/IP Layer</th><th>Examples / PDU</th></tr></thead>
+    <tbody>
+      <tr><td>7</td><td>Application</td><td rowspan="3">Application</td><td>HTTP, FTP, DNS, SMTP — Data</td></tr>
+      <tr><td>6</td><td>Presentation</td><td>Encryption, compression — Data</td></tr>
+      <tr><td>5</td><td>Session</td><td>Session control (NetBIOS) — Data</td></tr>
+      <tr><td>4</td><td>Transport</td><td>Transport</td><td>TCP, UDP — Segment</td></tr>
+      <tr><td>3</td><td>Network</td><td>Internet</td><td>IP, ICMP, routing — Packet</td></tr>
+      <tr><td>2</td><td>Data Link</td><td rowspan="2">Network Access</td><td>MAC, switches — Frame</td></tr>
+      <tr><td>1</td><td>Physical</td><td>Cables, hubs — Bits</td></tr>
+    </tbody>
+  </table>
+  <p><b>Yaad rakhne ka trick:</b> "All People Seem To Need Data Processing" (Application→Physical)</p>
+  <h3 class="label">Encapsulation Order</h3>
+  <div class="flow">Data → Segment (L4) → Packet (L3) → Frame (L2) → Bits (L1)</div>
+  <h3 class="label">TCP vs UDP</h3>
+  <table>
+    <thead><tr><th>TCP</th><th>UDP</th></tr></thead>
+    <tbody>
+      <tr><td>Connection-oriented (3-way handshake)</td><td>Connectionless</td></tr>
+      <tr><td>Reliable, ordered delivery</td><td>Fast, no guarantee</td></tr>
+      <tr><td>HTTP, FTP, Email, SSH</td><td>DNS, DHCP, VoIP, video streaming</td></tr>
+    </tbody>
+  </table>
+  <p><b>3-Way Handshake:</b> SYN → SYN-ACK → ACK</p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 2 -->
+<section class="card" id="s2">
+  <h2 class="sec">2. IP Addressing & Subnetting</h2>
+  <h3 class="label">IP Address Classes</h3>
+  <table>
+    <thead><tr><th>Class</th><th>Range</th><th>Default Mask</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>1 – 126</td><td>/8 (255.0.0.0)</td><td>Large networks</td></tr>
+      <tr><td>B</td><td>128 – 191</td><td>/16 (255.255.0.0)</td><td>Medium networks</td></tr>
+      <tr><td>C</td><td>192 – 223</td><td>/24 (255.255.255.0)</td><td>Small networks</td></tr>
+      <tr><td>D</td><td>224 – 239</td><td>—</td><td>Multicast</td></tr>
+      <tr><td>E</td><td>240 – 255</td><td>—</td><td>Experimental</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Private IP Ranges (RFC 1918)</h3>
+  <ul>
+    <li><code>10.0.0.0 – 10.255.255.255</code> (/8)</li>
+    <li><code>172.16.0.0 – 172.31.255.255</code> (/12)</li>
+    <li><code>192.168.0.0 – 192.168.255.255</code> (/16)</li>
+  </ul>
+  <h3 class="label">Subnet Cheat Table (CIDR)</h3>
+  <table>
+    <thead><tr><th>CIDR</th><th>Subnet Mask</th><th>Hosts (usable)</th><th>Block Size</th></tr></thead>
+    <tbody>
+      <tr><td>/24</td><td>255.255.255.0</td><td>254</td><td>256</td></tr>
+      <tr><td>/25</td><td>255.255.255.128</td><td>126</td><td>128</td></tr>
+      <tr><td>/26</td><td>255.255.255.192</td><td>62</td><td>64</td></tr>
+      <tr><td>/27</td><td>255.255.255.224</td><td>30</td><td>32</td></tr>
+      <tr><td>/28</td><td>255.255.255.240</td><td>14</td><td>16</td></tr>
+      <tr><td>/29</td><td>255.255.255.248</td><td>6</td><td>8</td></tr>
+      <tr><td>/30</td><td>255.255.255.252</td><td>2 (point-to-point link)</td><td>4</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Subnetting Formula</h3>
+  <p>Usable Hosts = <code>2^n − 2</code> (n = host bits)</p>
+  <p>Number of Subnets = <code>2^s</code> (s = borrowed bits)</p>
+  <h3 class="label">VLSM (Variable Length Subnet Mask)</h3>
+  <p>Bade network ko different size ki subnets mein divide karna based on actual host requirement — IP wastage kam hoti hai. Sabse bade requirement se start karo, sabse chote tak.</p>
+  <h3 class="label">IPv6 Basics</h3>
+  <ul>
+    <li>128-bit address, hex format: <code>2001:0db8:0000:0000:0000:ff00:0042:8329</code></li>
+    <li>Shortened: <code>2001:db8::ff00:42:8329</code> (leading zeros drop, :: for consecutive zero blocks — sirf ek baar use ho sakta hai)</li>
+    <li>Link-local: <code>fe80::/10</code></li>
+    <li>Unique Local: <code>fc00::/7</code></li>
+    <li>Global Unicast: <code>2000::/3</code></li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 3 -->
+<section class="card" id="s3">
+  <h2 class="sec">3. Cisco IOS Basics</h2>
+  <h3 class="label">CLI Modes</h3>
+  <table>
+    <thead><tr><th>Mode</th><th>Prompt</th><th>Enter Command</th></tr></thead>
+    <tbody>
+      <tr><td>User EXEC</td><td><code>Router&gt;</code></td><td>login</td></tr>
+      <tr><td>Privileged EXEC</td><td><code>Router#</code></td><td><code>enable</code></td></tr>
+      <tr><td>Global Config</td><td><code>Router(config)#</code></td><td><code>configure terminal</code></td></tr>
+      <tr><td>Interface Config</td><td><code>Router(config-if)#</code></td><td><code>interface gi0/0</code></td></tr>
+      <tr><td>Line Config</td><td><code>Router(config-line)#</code></td><td><code>line vty 0 4</code></td></tr>
+      <tr><td>Router Config</td><td><code>Router(config-router)#</code></td><td><code>router ospf 1</code></td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Essential Basic Commands</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>hostname R1</code></td><td>Device ka naam set karo</td></tr>
+      <tr><td><code>enable secret cisco123</code></td><td>Encrypted privileged password</td></tr>
+      <tr><td><code>service password-encryption</code></td><td>Sab passwords encrypt karo</td></tr>
+      <tr><td><code>line console 0</code> → <code>password xxx</code> → <code>login</code></td><td>Console password set</td></tr>
+      <tr><td><code>line vty 0 4</code> → <code>password xxx</code> → <code>login</code></td><td>Telnet/SSH password</td></tr>
+      <tr><td><code>banner motd #message#</code></td><td>Login banner</td></tr>
+      <tr><td><code>interface gi0/0</code></td><td>Interface config mein jao</td></tr>
+      <tr><td><code>ip address 192.168.1.1 255.255.255.0</code></td><td>IP assign karo</td></tr>
+      <tr><td><code>no shutdown</code></td><td>Interface enable karo</td></tr>
+      <tr><td><code>description LINK-TO-ISP</code></td><td>Interface label</td></tr>
+      <tr><td><code>copy running-config startup-config</code> (<code>wr</code>)</td><td>Config save karo</td></tr>
+      <tr><td><code>erase startup-config</code></td><td>Saved config delete</td></tr>
+      <tr><td><code>reload</code></td><td>Device restart</td></tr>
+      <tr><td><code>write memory</code></td><td>Config save (alternative)</td></tr>
+      <tr><td><code>copy running-config tftp</code></td><td>Config backup TFTP server par</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Show Commands (Verification)</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Shows</th></tr></thead>
+    <tbody>
+      <tr><td><code>show running-config</code></td><td>Current active config</td></tr>
+      <tr><td><code>show startup-config</code></td><td>Saved config (NVRAM)</td></tr>
+      <tr><td><code>show ip interface brief</code></td><td>Sab interfaces ka IP + status</td></tr>
+      <tr><td><code>show interfaces</code></td><td>Detailed interface stats</td></tr>
+      <tr><td><code>show version</code></td><td>IOS version, uptime, hardware</td></tr>
+      <tr><td><code>show ip route</code></td><td>Routing table</td></tr>
+      <tr><td><code>show vlan brief</code></td><td>VLAN list</td></tr>
+      <tr><td><code>show mac address-table</code></td><td>MAC-port mapping</td></tr>
+      <tr><td><code>show cdp neighbors</code></td><td>Directly connected Cisco devices</td></tr>
+      <tr><td><code>show spanning-tree</code></td><td>STP status</td></tr>
+      <tr><td><code>show arp</code></td><td>ARP table</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 4 -->
+<section class="card" id="s4">
+  <h2 class="sec">4. Switching: VLAN, Trunk, STP</h2>
+  <h3 class="label">VLAN kya hai</h3>
+  <p>VLAN ek switch ko logically multiple broadcast domains mein divide karta hai — bina alag hardware ke.</p>
+  <h3 class="label">VLAN Commands</h3>
+  <pre>Switch(config)# vlan 10
+Switch(config-vlan)# name SALES
+Switch(config)# interface fa0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10</pre>
+  <h3 class="label">Trunk Commands (802.1Q)</h3>
+  <pre>Switch(config)# interface gi0/1
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# switchport trunk allowed vlan 10,20,30
+Switch(config-if)# switchport trunk native vlan 99</pre>
+  <h3 class="label">Inter-VLAN Routing (Router-on-a-Stick)</h3>
+  <pre>Router(config)# interface gi0/0.10
+Router(config-subif)# encapsulation dot1Q 10
+Router(config-subif)# ip address 192.168.10.1 255.255.255.0</pre>
+  <h3 class="label">Spanning Tree Protocol (STP)</h3>
+  <p>Layer 2 loops (broadcast storm) prevent karta hai redundant switch links mein.</p>
+  <table>
+    <thead><tr><th>Port State</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>Blocking</td><td>Data forward nahi karta, loop prevent</td></tr>
+      <tr><td>Listening</td><td>BPDU sun raha hai</td></tr>
+      <tr><td>Learning</td><td>MAC addresses seekh raha hai</td></tr>
+      <tr><td>Forwarding</td><td>Normal data forward</td></tr>
+      <tr><td>Disabled</td><td>Admin ne shutdown kiya</td></tr>
+    </tbody>
+  </table>
+  <p><b>Root Bridge Election:</b> Sabse lowest Bridge ID (Priority + MAC) wala switch root banta hai.</p>
+  <pre>Switch(config)# spanning-tree vlan 10 priority 4096
+Switch(config)# spanning-tree mode rapid-pvst</pre>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 5 -->
+<section class="card" id="s5">
+  <h2 class="sec">5. EtherChannel & Port Security</h2>
+  <h3 class="label">EtherChannel (Link Aggregation)</h3>
+  <p>Multiple physical links ko ek logical link mein combine karta hai (bandwidth + redundancy).</p>
+  <pre>Switch(config)# interface range gi0/1-2
+Switch(config-if-range)# channel-group 1 mode active   (LACP)
+Switch(config-if-range)# channel-group 1 mode desirable (PAgP)
+Switch(config-if-range)# channel-group 1 mode on        (static, no protocol)</pre>
+  <h3 class="label">Port Security</h3>
+  <pre>Switch(config-if)# switchport port-security
+Switch(config-if)# switchport port-security maximum 2
+Switch(config-if)# switchport port-security mac-address sticky
+Switch(config-if)# switchport port-security violation shutdown</pre>
+  <table>
+    <thead><tr><th>Violation Mode</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>Protect</td><td>Extra traffic drop, no log</td></tr>
+      <tr><td>Restrict</td><td>Traffic drop + log/counter increase</td></tr>
+      <tr><td>Shutdown</td><td>Port err-disabled ho jata hai (default)</td></tr>
+    </tbody>
+  </table>
+  <pre># Err-disabled port recover karne ke liye:
+Switch(config-if)# shutdown
+Switch(config-if)# no shutdown</pre>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 6 -->
+<section class="card" id="s6">
+  <h2 class="sec">6. Routing: Static & Dynamic</h2>
+  <h3 class="label">Static Route</h3>
+  <pre>Router(config)# ip route 192.168.2.0 255.255.255.0 192.168.1.2
+Router(config)# ip route 0.0.0.0 0.0.0.0 192.168.1.1   (Default route)</pre>
+  <h3 class="label">Administrative Distance (AD) — Trust Level</h3>
+  <table>
+    <thead><tr><th>Source</th><th>AD</th></tr></thead>
+    <tbody>
+      <tr><td>Connected</td><td>0</td></tr>
+      <tr><td>Static</td><td>1</td></tr>
+      <tr><td>EIGRP</td><td>90</td></tr>
+      <tr><td>OSPF</td><td>110</td></tr>
+      <tr><td>RIP</td><td>120</td></tr>
+      <tr><td>Unknown/unreachable</td><td>255</td></tr>
+    </tbody>
+  </table>
+  <p>Lower AD = zyada trusted route.</p>
+  <h3 class="label">RIP (Routing Information Protocol)</h3>
+  <pre>Router(config)# router rip
+Router(config-router)# version 2
+Router(config-router)# network 192.168.1.0
+Router(config-router)# no auto-summary</pre>
+  <p>Metric = hop count (max 15 hops). Distance-vector protocol.</p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 7 -->
+<section class="card" id="s7">
+  <h2 class="sec">7. OSPF & EIGRP Deep Dive</h2>
+  <h3 class="label">OSPF (Open Shortest Path First)</h3>
+  <p>Link-state protocol, metric = cost (bandwidth based), area-based hierarchy.</p>
+  <pre>Router(config)# router ospf 1
+Router(config-router)# network 192.168.1.0 0.0.0.255 area 0
+Router(config-router)# router-id 1.1.1.1</pre>
+  <table>
+    <thead><tr><th>OSPF Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>Area 0</td><td>Backbone area — sab areas isse connect hone chahiye</td></tr>
+      <tr><td>Router ID</td><td>Unique identifier (highest loopback/IP)</td></tr>
+      <tr><td>DR/BDR</td><td>Designated/Backup Designated Router (multi-access networks)</td></tr>
+      <tr><td>Hello/Dead Timer</td><td>10s / 40s (default on Ethernet)</td></tr>
+      <tr><td>LSA</td><td>Link State Advertisement — topology info</td></tr>
+    </tbody>
+  </table>
+  <p>Verification: <code>show ip ospf neighbor</code>, <code>show ip protocols</code></p>
+
+  <h3 class="label">EIGRP (Enhanced Interior Gateway Routing Protocol)</h3>
+  <p>Cisco proprietary, advanced distance-vector (hybrid), fast convergence — DUAL algorithm.</p>
+  <pre>Router(config)# router eigrp 100
+Router(config-router)# network 192.168.1.0 0.0.0.255
+Router(config-router)# no auto-summary</pre>
+  <p>Metric = bandwidth + delay (composite). Verification: <code>show ip eigrp neighbors</code></p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 8 -->
+<section class="card" id="s8">
+  <h2 class="sec">8. Access Control Lists (ACL)</h2>
+  <p>Traffic filter karne ke liye — permit/deny based on source/destination IP, port, protocol.</p>
+  <h3 class="label">Standard ACL (1–99)</h3>
+  <p>Sirf source IP check karta hai. Destination ke jitna close rakho.</p>
+  <pre>Router(config)# access-list 10 permit 192.168.1.0 0.0.0.255
+Router(config)# access-list 10 deny any
+Router(config)# interface gi0/1
+Router(config-if)# ip access-group 10 out</pre>
+  <h3 class="label">Extended ACL (100–199)</h3>
+  <p>Source + destination IP, protocol, port sab check karta hai. Source ke jitna close rakho.</p>
+  <pre>Router(config)# access-list 110 permit tcp 192.168.1.0 0.0.0.255 any eq 80
+Router(config)# access-list 110 deny ip any any
+Router(config)# interface gi0/0
+Router(config-if)# ip access-group 110 in</pre>
+  <h3 class="label">Named ACL</h3>
+  <pre>Router(config)# ip access-list extended BLOCK-FTP
+Router(config-ext-nacl)# deny tcp any any eq 21
+Router(config-ext-nacl)# permit ip any any</pre>
+  <p><b>Important:</b> Har ACL ke end mein implicit <code>deny any</code> hota hai.</p>
+  <p>Verification: <code>show access-lists</code>, <code>show ip interface</code></p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 9 -->
+<section class="card" id="s9">
+  <h2 class="sec">9. NAT / PAT</h2>
+  <p>Private IP ko public IP mein translate karta hai internet access ke liye.</p>
+  <h3 class="label">Static NAT</h3>
+  <pre>Router(config)# ip nat inside source static 192.168.1.10 203.0.113.10
+Router(config)# interface gi0/0
+Router(config-if)# ip nat inside
+Router(config)# interface gi0/1
+Router(config-if)# ip nat outside</pre>
+  <h3 class="label">Dynamic NAT</h3>
+  <pre>Router(config)# access-list 1 permit 192.168.1.0 0.0.0.255
+Router(config)# ip nat pool MYPOOL 203.0.113.1 203.0.113.10 netmask 255.255.255.0
+Router(config)# ip nat inside source list 1 pool MYPOOL</pre>
+  <h3 class="label">PAT (Port Address Translation / NAT Overload)</h3>
+  <pre>Router(config)# access-list 1 permit 192.168.1.0 0.0.0.255
+Router(config)# ip nat inside source list 1 interface gi0/1 overload</pre>
+  <p>Verification: <code>show ip nat translations</code>, <code>show ip nat statistics</code></p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 10 -->
+<section class="card" id="s10">
+  <h2 class="sec">10. DHCP & DNS on Cisco</h2>
+  <h3 class="label">DHCP Server Config (Router)</h3>
+  <pre>Router(config)# ip dhcp excluded-address 192.168.1.1 192.168.1.10
+Router(config)# ip dhcp pool LAN-POOL
+Router(dhcp-config)# network 192.168.1.0 255.255.255.0
+Router(dhcp-config)# default-router 192.168.1.1
+Router(dhcp-config)# dns-server 8.8.8.8
+Router(dhcp-config)# lease 7</pre>
+  <h3 class="label">DHCP Relay (different subnet ke liye)</h3>
+  <pre>Router(config-if)# ip helper-address 192.168.1.5</pre>
+  <p>DHCP process: <b>DORA</b> — Discover → Offer → Request → Acknowledge</p>
+  <h3 class="label">DNS on Router</h3>
+  <pre>Router(config)# ip domain-name mycompany.local
+Router(config)# ip name-server 8.8.8.8</pre>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 11 -->
+<section class="card" id="s11">
+  <h2 class="sec">11. WAN, VPN & Tunneling</h2>
+  <h3 class="label">WAN Technologies</h3>
+  <ul>
+    <li><b>Leased Line</b> — dedicated point-to-point</li>
+    <li><b>MPLS</b> — provider ka managed WAN</li>
+    <li><b>Broadband (DSL/Cable)</b> — cost-effective internet WAN</li>
+    <li><b>4G/5G LTE</b> — wireless backup WAN</li>
+  </ul>
+  <h3 class="label">PPP (Point-to-Point Protocol)</h3>
+  <pre>Router(config-if)# encapsulation ppp
+Router(config-if)# ppp authentication chap</pre>
+  <h3 class="label">GRE Tunnel</h3>
+  <pre>Router(config)# interface tunnel0
+Router(config-if)# ip address 10.0.0.1 255.255.255.252
+Router(config-if)# tunnel source gi0/0
+Router(config-if)# tunnel destination 203.0.113.5</pre>
+  <h3 class="label">Site-to-Site IPsec VPN (Concept)</h3>
+  <p>Phase 1 (IKE) — secure tunnel negotiate karta hai. Phase 2 (IPsec SA) — actual data encryption. ISAKMP policy, transform-set, crypto map configure hote hain.</p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 12 -->
+<section class="card" id="s12">
+  <h2 class="sec">12. Wireless (WLAN) Basics</h2>
+  <table>
+    <thead><tr><th>Standard</th><th>Band</th><th>Max Speed</th></tr></thead>
+    <tbody>
+      <tr><td>802.11a</td><td>5 GHz</td><td>54 Mbps</td></tr>
+      <tr><td>802.11b</td><td>2.4 GHz</td><td>11 Mbps</td></tr>
+      <tr><td>802.11g</td><td>2.4 GHz</td><td>54 Mbps</td></tr>
+      <tr><td>802.11n (Wi-Fi 4)</td><td>2.4/5 GHz</td><td>600 Mbps</td></tr>
+      <tr><td>802.11ac (Wi-Fi 5)</td><td>5 GHz</td><td>~3.5 Gbps</td></tr>
+      <tr><td>802.11ax (Wi-Fi 6)</td><td>2.4/5/6 GHz</td><td>~9.6 Gbps</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">WLAN Components</h3>
+  <ul>
+    <li><b>AP (Access Point)</b> — wireless clients ko connect karta hai</li>
+    <li><b>WLC (Wireless LAN Controller)</b> — multiple APs manage karta hai (centralized)</li>
+    <li><b>SSID</b> — network name</li>
+    <li><b>Security:</b> WEP (weak) → WPA → WPA2 (AES) → WPA3 (latest, strongest)</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 13 -->
+<section class="card" id="s13">
+  <h2 class="sec">13. Network Security Basics</h2>
+  <table>
+    <thead><tr><th>Feature</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Port Security</td><td>Kitne MAC address ek port par allow hain, limit karta hai</td></tr>
+      <tr><td>DHCP Snooping</td><td>Rogue DHCP server block karta hai</td></tr>
+      <tr><td>Dynamic ARP Inspection (DAI)</td><td>ARP spoofing prevent karta hai</td></tr>
+      <tr><td>AAA</td><td>Authentication, Authorization, Accounting</td></tr>
+      <tr><td>802.1X</td><td>Port-based network access control</td></tr>
+      <tr><td>VPN</td><td>Encrypted remote connectivity</td></tr>
+      <tr><td>Firewall / ACL</td><td>Traffic filtering</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Common Attacks</h3>
+  <ul>
+    <li><b>MAC Flooding</b> — switch CAM table overload</li>
+    <li><b>VLAN Hopping</b> — trunk misconfiguration exploit</li>
+    <li><b>DHCP Spoofing</b> — fake DHCP server</li>
+    <li><b>ARP Spoofing</b> — fake ARP replies, MITM attack</li>
+    <li><b>DDoS</b> — service ko traffic se overwhelm karna</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 14 -->
+<section class="card" id="s14">
+  <h2 class="sec">14. Automation & Programmability</h2>
+  <p>Modern CCNA (200-301) mein basic intro hota hai:</p>
+  <ul>
+    <li><b>SDN (Software Defined Networking)</b> — control plane aur data plane separate</li>
+    <li><b>Controller-based networking</b> — Cisco DNA Center jaise centralized management</li>
+    <li><b>REST API</b> — HTTP methods (GET, POST, PUT, DELETE) se device configure karna</li>
+    <li><b>JSON/XML/YAML</b> — data format automation scripts ke liye</li>
+    <li><b>Ansible/Puppet/Chef</b> — configuration management tools</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 15 -->
+<section class="card" id="s15">
+  <h2 class="sec">15. Troubleshooting Commands</h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>ping &lt;ip&gt;</code></td><td>Basic connectivity test</td></tr>
+      <tr><td><code>traceroute &lt;ip&gt;</code></td><td>Path ke har hop ko dikhata hai</td></tr>
+      <tr><td><code>show ip interface brief</code></td><td>Interfaces up/down status</td></tr>
+      <tr><td><code>show interfaces gi0/0</code></td><td>Errors, drops, speed/duplex check</td></tr>
+      <tr><td><code>show cdp neighbors detail</code></td><td>Neighbor device details</td></tr>
+      <tr><td><code>show ip route</code></td><td>Route missing hai ya nahi check</td></tr>
+      <tr><td><code>debug ip icmp</code></td><td>Real-time ICMP debug (production mein carefully use karo)</td></tr>
+      <tr><td><code>show logging</code></td><td>Device logs</td></tr>
+      <tr><td><code>show processes cpu</code></td><td>High CPU issue check</td></tr>
+      <tr><td><code>show tech-support</code></td><td>Complete diagnostic dump (TAC ke liye)</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">Troubleshooting Order: Physical → Data Link (VLAN/Trunk) → Network (IP/Route) → ACL → NAT → Application</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 16 -->
+<section class="card" id="s16">
+  <h2 class="sec">16. Full Command Cheat Sheet (Quick Reference)</h2>
+  <table>
+    <thead><tr><th>Task</th><th>Command</th></tr></thead>
+    <tbody>
+      <tr><td>Enter privileged mode</td><td><code>enable</code></td></tr>
+      <tr><td>Enter global config</td><td><code>configure terminal</code></td></tr>
+      <tr><td>Set hostname</td><td><code>hostname NAME</code></td></tr>
+      <tr><td>Set enable password</td><td><code>enable secret PASS</code></td></tr>
+      <tr><td>Assign IP to interface</td><td><code>ip address IP MASK</code></td></tr>
+      <tr><td>Enable interface</td><td><code>no shutdown</code></td></tr>
+      <tr><td>Create VLAN</td><td><code>vlan 10</code> / <code>name NAME</code></td></tr>
+      <tr><td>Assign access VLAN</td><td><code>switchport access vlan 10</code></td></tr>
+      <tr><td>Set trunk</td><td><code>switchport mode trunk</code></td></tr>
+      <tr><td>Static route</td><td><code>ip route DEST MASK NEXTHOP</code></td></tr>
+      <tr><td>Enable OSPF</td><td><code>router ospf 1</code> / <code>network ... area 0</code></td></tr>
+      <tr><td>Enable EIGRP</td><td><code>router eigrp 100</code> / <code>network ...</code></td></tr>
+      <tr><td>Standard ACL</td><td><code>access-list 10 permit/deny SRC</code></td></tr>
+      <tr><td>Extended ACL</td><td><code>access-list 110 permit/deny PROTO SRC DST</code></td></tr>
+      <tr><td>Apply ACL</td><td><code>ip access-group NUM in/out</code></td></tr>
+      <tr><td>PAT/NAT overload</td><td><code>ip nat inside source list 1 interface X overload</code></td></tr>
+      <tr><td>DHCP pool</td><td><code>ip dhcp pool NAME</code></td></tr>
+      <tr><td>Save config</td><td><code>copy running-config startup-config</code> / <code>wr</code></td></tr>
+      <tr><td>Show interfaces</td><td><code>show ip interface brief</code></td></tr>
+      <tr><td>Show routes</td><td><code>show ip route</code></td></tr>
+      <tr><td>Show VLANs</td><td><code>show vlan brief</code></td></tr>
+      <tr><td>Show neighbors</td><td><code>show cdp neighbors</code></td></tr>
+      <tr><td>Show NAT table</td><td><code>show ip nat translations</code></td></tr>
+      <tr><td>Show ACLs</td><td><code>show access-lists</code></td></tr>
+      <tr><td>Ping/Trace</td><td><code>ping IP</code> / <code>traceroute IP</code></td></tr>
+    </tbody>
+  </table>
+  <div class="remember">🎯 Exam Tip: Har topic mein — Concept samjho, Command yaad karo, aur "show" command se verify karna practice karo.</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<footer>CCNA Complete Revision Guide · Good luck! 🌐</footer>
+</div>
+</body>
+</html>
