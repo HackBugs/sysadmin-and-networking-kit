@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All-in-One Technical Support Commands & Tools Master Sheet</title>
+<style>
+  :root {
+    --bg: #101018; --card-bg: #191927; --text: #eceef5; --muted: #9c9db3;
+    --accent: #a78bfa; --accent-soft: #241f3a; --border: #2a2a3d;
+    --code-bg: #1f1f30; --shadow: rgba(0,0,0,0.4);
+    box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f6fb; --card-bg: #ffffff; --text: #1c1c26; --muted: #5f6070;
+    --accent: #6d28d9; --accent-soft: #ede9fe; --border: #e6e4f0;
+    --code-bg: #f1eefb; --shadow: rgba(30,20,60,0.06);
+  }
+  html { scroll-padding-top: 80px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+  header.top { position:sticky; top:0; top:env(safe-area-inset-top,0px); z-index:20; background:var(--card-bg); border-bottom:1px solid var(--border); padding:14px 20px calc(14px + env(safe-area-inset-top,0px)); box-shadow:0 2px 10px var(--shadow); }
+  header.top h1 { margin:0; font-size:1.05rem; color:var(--accent); }
+  header.top p { margin:2px 0 0; font-size:0.8rem; color:var(--muted); }
+  .wrap { max-width:920px; margin:0 auto; padding:24px 16px 80px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:20px 20px 24px; margin-bottom:20px; box-shadow:0 2px 10px var(--shadow); }
+  .index-list { list-style:none; padding:0; margin:12px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:480px) { .index-list { grid-template-columns:1fr; } }
+  .index-list a { display:block; padding:10px 12px; border-radius:10px; background:var(--accent-soft); color:var(--text); text-decoration:none; font-size:0.88rem; border:1px solid transparent; }
+  .index-list a:hover { border-color:var(--accent); }
+  .index-list .num { color:var(--accent); font-weight:700; margin-right:6px; }
+  .tag { display:inline-block; font-size:0.68rem; font-weight:800; padding:2px 8px; border-radius:12px; margin-left:8px; vertical-align:middle; }
+  .tag.win { background:#dbeafe; color:#1e40af; }
+  .tag.lin { background:#fde68a; color:#7c4a03; }
+  .tag.both { background:#d1fae5; color:#065f46; }
+  .tag.cctv { background:#fecdd3; color:#9f1239; }
+  :root:not([data-theme="light"]) .tag.win { background:#1e3a5f; color:#93c5fd; }
+  :root:not([data-theme="light"]) .tag.lin { background:#4a3a10; color:#fcd34d; }
+  :root:not([data-theme="light"]) .tag.both { background:#0f3d2e; color:#6ee7b7; }
+  :root:not([data-theme="light"]) .tag.cctv { background:#4a1027; color:#fda4af; }
+  h2.sec { color:var(--accent); border-bottom:2px solid var(--accent-soft); padding-bottom:8px; margin-top:0; font-size:1.1rem; scroll-margin-top:80px; }
+  h3 { font-size:0.95rem; margin:16px 0 6px; color:var(--text); }
+  h3.label { text-transform:uppercase; letter-spacing:.04em; font-size:0.75rem; color:var(--muted); margin:18px 0 6px; font-weight:700; }
+  p { margin:6px 0; }
+  ul,ol { margin:6px 0; padding-left:22px; } li{ margin:3px 0; }
+  code { background:var(--code-bg); padding:2px 7px; border-radius:6px; font-size:0.86em; font-family:"SFMono-Regular",Consolas,Menlo,monospace; color:var(--accent); }
+  pre { background:var(--code-bg); padding:12px 14px; border-radius:10px; overflow-x:auto; font-size:0.84rem; font-family:"SFMono-Regular",Consolas,Menlo,monospace; margin:8px 0; }
+  .flow { background:var(--code-bg); border-left:3px solid var(--accent); padding:10px 14px; border-radius:8px; font-weight:600; font-size:0.9rem; margin:10px 0; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.84rem; display:block; overflow-x:auto; white-space:nowrap; }
+  table thead { background:var(--accent-soft); }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+  th { color:var(--accent); font-weight:700; }
+  .remember { background:var(--code-bg); border:1px dashed var(--accent); border-radius:10px; padding:10px 14px; margin:10px 0; font-weight:700; font-size:0.88rem; }
+  .backtop { display:inline-block; margin-top:14px; font-size:0.8rem; color:var(--accent); text-decoration:none; border:1px solid var(--border); padding:5px 12px; border-radius:20px; }
+  hr.sep { border:none; border-top:1px solid var(--border); margin:24px 0; }
+  footer { text-align:center; color:var(--muted); font-size:0.8rem; padding:18px 0 10px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>🧰 All-in-One Technical Support Commands & Tools</h1>
+  <p>System + Network + CCTV troubleshooting — poora toolkit ek jagah</p>
+</header>
+<div class="wrap">
+
+<section class="card" id="top">
+  <h2 class="sec">📌 Index</h2>
+  <ul class="index-list">
+    <li><a href="#s1"><span class="num">1.</span>Network Troubleshooting Commands</a></li>
+    <li><a href="#s2"><span class="num">2.</span>Windows System Commands</a></li>
+    <li><a href="#s3"><span class="num">3.</span>PowerShell Essentials</a></li>
+    <li><a href="#s4"><span class="num">4.</span>Linux System & Network Commands</a></li>
+    <li><a href="#s5"><span class="num">5.</span>Remote Access & File Transfer</a></li>
+    <li><a href="#s6"><span class="num">6.</span>Active Directory / Domain Commands</a></li>
+    <li><a href="#s7"><span class="num">7.</span>Email / Outlook Troubleshooting</a></li>
+    <li><a href="#s8"><span class="num">8.</span>Printer Troubleshooting</a></li>
+    <li><a href="#s9"><span class="num">9.</span>CCTV / Hikvision Commands & Tools</a></li>
+    <li><a href="#s10"><span class="num">10.</span>GUI Diagnostic Tools (Windows)</a></li>
+    <li><a href="#s11"><span class="num">11.</span>Essential Third-Party Tools</a></li>
+    <li><a href="#s12"><span class="num">12.</span>Troubleshooting Flowcharts</a></li>
+    <li><a href="#s13"><span class="num">13.</span>Master Command Table (All-in-One)</a></li>
+  </ul>
+</section>
+
+<!-- 1 -->
+<section class="card" id="s1">
+  <h2 class="sec">1. Network Troubleshooting Commands <span class="tag both">Windows + Linux</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>OS</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>ping &lt;host&gt;</code></td><td>Both</td><td>Basic connectivity test</td></tr>
+      <tr><td><code>ping -t &lt;host&gt;</code></td><td>Win</td><td>Continuous ping (Ctrl+C to stop)</td></tr>
+      <tr><td><code>ping -c 10 &lt;host&gt;</code></td><td>Linux</td><td>10 packets bhejo aur stop</td></tr>
+      <tr><td><code>tracert &lt;host&gt;</code></td><td>Win</td><td>Path/hop trace</td></tr>
+      <tr><td><code>traceroute &lt;host&gt;</code></td><td>Linux</td><td>Path/hop trace</td></tr>
+      <tr><td><code>pathping &lt;host&gt;</code></td><td>Win</td><td>Trace + packet loss stats (ping + tracert combined)</td></tr>
+      <tr><td><code>ipconfig /all</code></td><td>Win</td><td>Full network config</td></tr>
+      <tr><td><code>ip a</code> / <code>ifconfig</code></td><td>Linux</td><td>IP config dikhao</td></tr>
+      <tr><td><code>ipconfig /release</code> & <code>/renew</code></td><td>Win</td><td>DHCP IP release/renew</td></tr>
+      <tr><td><code>dhclient -r</code> & <code>dhclient</code></td><td>Linux</td><td>DHCP release/renew</td></tr>
+      <tr><td><code>ipconfig /flushdns</code></td><td>Win</td><td>DNS cache clear</td></tr>
+      <tr><td><code>systemd-resolve --flush-caches</code></td><td>Linux</td><td>DNS cache clear</td></tr>
+      <tr><td><code>nslookup &lt;domain&gt;</code></td><td>Both</td><td>DNS query test</td></tr>
+      <tr><td><code>dig &lt;domain&gt;</code></td><td>Linux</td><td>Detailed DNS lookup</td></tr>
+      <tr><td><code>netstat -ano</code></td><td>Win</td><td>Connections + listening ports + PID</td></tr>
+      <tr><td><code>ss -tulnp</code></td><td>Linux</td><td>Connections + listening ports</td></tr>
+      <tr><td><code>arp -a</code></td><td>Both</td><td>ARP table (IP–MAC mapping)</td></tr>
+      <tr><td><code>route print</code></td><td>Win</td><td>Routing table</td></tr>
+      <tr><td><code>ip route</code></td><td>Linux</td><td>Routing table</td></tr>
+      <tr><td><code>telnet &lt;host&gt; &lt;port&gt;</code></td><td>Both</td><td>Specific port reachability test</td></tr>
+      <tr><td><code>Test-NetConnection host -Port 443</code></td><td>Win (PS)</td><td>Port connectivity test</td></tr>
+      <tr><td><code>nc -zv host port</code></td><td>Linux</td><td>Netcat port test</td></tr>
+      <tr><td><code>curl -I https://site.com</code></td><td>Both</td><td>HTTP headers/status check</td></tr>
+      <tr><td><code>netsh wlan show profiles</code></td><td>Win</td><td>Saved Wi-Fi profiles</td></tr>
+      <tr><td><code>netsh winsock reset</code></td><td>Win</td><td>Network stack reset (deep network issues)</td></tr>
+      <tr><td><code>netsh int ip reset</code></td><td>Win</td><td>TCP/IP stack reset</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">Troubleshooting Order: Physical → IP (ipconfig) → Gateway (ping) → Internet (ping 8.8.8.8) → DNS (nslookup) → Destination Server (ping/tracert) → Port (telnet/Test-NetConnection)</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 2 -->
+<section class="card" id="s2">
+  <h2 class="sec">2. Windows System Troubleshooting Commands <span class="tag win">CMD</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>tasklist</code></td><td>Running processes list</td></tr>
+      <tr><td><code>taskkill /PID 1234 /F</code></td><td>Process force kill by PID</td></tr>
+      <tr><td><code>taskkill /IM notepad.exe /F</code></td><td>Process kill by name</td></tr>
+      <tr><td><code>systeminfo</code></td><td>Full system details (OS, RAM, patches)</td></tr>
+      <tr><td><code>sfc /scannow</code></td><td>System files corruption scan + repair</td></tr>
+      <tr><td><code>DISM /Online /Cleanup-Image /RestoreHealth</code></td><td>Windows image repair (sfc se pehle chalao agar sfc fail ho)</td></tr>
+      <tr><td><code>chkdsk C: /f /r</code></td><td>Disk error check + bad sector fix</td></tr>
+      <tr><td><code>diskpart</code></td><td>Disk partitioning utility</td></tr>
+      <tr><td><code>shutdown /r /t 0</code></td><td>Immediate restart</td></tr>
+      <tr><td><code>shutdown /s /t 0</code></td><td>Immediate shutdown</td></tr>
+      <tr><td><code>shutdown /a</code></td><td>Scheduled shutdown cancel</td></tr>
+      <tr><td><code>gpupdate /force</code></td><td>Group policy immediately apply</td></tr>
+      <tr><td><code>gpresult /r</code></td><td>Applied GPO summary</td></tr>
+      <tr><td><code>wmic diskdrive get status</code></td><td>Disk health status</td></tr>
+      <tr><td><code>wmic product get name</code></td><td>Installed software list</td></tr>
+      <tr><td><code>net user</code></td><td>Local users list</td></tr>
+      <tr><td><code>net user USERNAME PASSWORD /add</code></td><td>New user create</td></tr>
+      <tr><td><code>net localgroup administrators USER /add</code></td><td>User ko admin group mein add</td></tr>
+      <tr><td><code>net share</code></td><td>Shared folders list</td></tr>
+      <tr><td><code>net use Z: \\server\share</code></td><td>Network drive map</td></tr>
+      <tr><td><code>net use Z: /delete</code></td><td>Mapped drive remove</td></tr>
+      <tr><td><code>icacls file.txt /grant USER:F</code></td><td>File permission grant (full control)</td></tr>
+      <tr><td><code>robocopy SRC DEST /MIR</code></td><td>Reliable folder mirror/copy (large data)</td></tr>
+      <tr><td><code>xcopy SRC DEST /E /H</code></td><td>Files/folders copy including hidden</td></tr>
+      <tr><td><code>whoami /all</code></td><td>Current user + group + privileges</td></tr>
+      <tr><td><code>msconfig</code></td><td>Startup/services/boot config (GUI)</td></tr>
+      <tr><td><code>services.msc</code></td><td>Services management (GUI)</td></tr>
+      <tr><td><code>compmgmt.msc</code></td><td>Computer Management console</td></tr>
+      <tr><td><code>regedit</code></td><td>Registry editor</td></tr>
+      <tr><td><code>cleanmgr</code></td><td>Disk cleanup utility</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 3 -->
+<section class="card" id="s3">
+  <h2 class="sec">3. PowerShell Essentials <span class="tag win">PowerShell</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>Get-Process</code></td><td>Running processes</td></tr>
+      <tr><td><code>Stop-Process -Name notepad -Force</code></td><td>Process stop</td></tr>
+      <tr><td><code>Get-Service</code></td><td>All services status</td></tr>
+      <tr><td><code>Restart-Service SPOOLER</code></td><td>Service restart</td></tr>
+      <tr><td><code>Get-EventLog -LogName System -Newest 20</code></td><td>Latest system logs</td></tr>
+      <tr><td><code>Get-WinEvent -LogName Application -MaxEvents 20</code></td><td>Application logs</td></tr>
+      <tr><td><code>Get-ComputerInfo</code></td><td>Full computer details</td></tr>
+      <tr><td><code>Get-Disk</code> / <code>Get-Volume</code></td><td>Disk/volume info</td></tr>
+      <tr><td><code>Test-Connection google.com</code></td><td>Ping (PowerShell version)</td></tr>
+      <tr><td><code>Test-NetConnection -ComputerName host -Port 443</code></td><td>Specific port test</td></tr>
+      <tr><td><code>Get-NetIPConfiguration</code></td><td>Network config</td></tr>
+      <tr><td><code>Get-NetAdapter</code></td><td>Network adapters list</td></tr>
+      <tr><td><code>Enable-NetAdapter -Name "Ethernet"</code></td><td>Adapter enable</td></tr>
+      <tr><td><code>Get-HotFix</code></td><td>Installed Windows updates/patches</td></tr>
+      <tr><td><code>Enter-PSSession -ComputerName SRV01</code></td><td>Remote server session</td></tr>
+      <tr><td><code>Invoke-Command -ComputerName SRV01 -ScriptBlock {Get-Service}</code></td><td>Remote command run</td></tr>
+      <tr><td><code>Get-ExecutionPolicy</code> / <code>Set-ExecutionPolicy RemoteSigned</code></td><td>Script execution policy</td></tr>
+      <tr><td><code>Export-Csv report.csv -NoTypeInformation</code></td><td>Data ko CSV export karo</td></tr>
+      <tr><td><code>Get-LocalUser</code> / <code>Get-LocalGroup</code></td><td>Local users/groups</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 4 -->
+<section class="card" id="s4">
+  <h2 class="sec">4. Linux System & Network Commands <span class="tag lin">Linux</span></h2>
+  <h3 class="label">System</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>top</code> / <code>htop</code></td><td>Live CPU/RAM/process monitor</td></tr>
+      <tr><td><code>ps aux</code></td><td>All running processes</td></tr>
+      <tr><td><code>kill -9 PID</code></td><td>Process force kill</td></tr>
+      <tr><td><code>df -h</code></td><td>Disk space usage</td></tr>
+      <tr><td><code>du -sh /path</code></td><td>Folder size check</td></tr>
+      <tr><td><code>free -h</code></td><td>RAM usage</td></tr>
+      <tr><td><code>uptime</code></td><td>System uptime + load average</td></tr>
+      <tr><td><code>uname -a</code></td><td>Kernel/OS info</td></tr>
+      <tr><td><code>hostnamectl</code></td><td>Hostname + OS details</td></tr>
+      <tr><td><code>systemctl status nginx</code></td><td>Service status</td></tr>
+      <tr><td><code>systemctl restart nginx</code></td><td>Service restart</td></tr>
+      <tr><td><code>journalctl -u nginx -f</code></td><td>Live service logs</td></tr>
+      <tr><td><code>tail -f /var/log/syslog</code></td><td>Live system log follow</td></tr>
+      <tr><td><code>chmod 755 file</code></td><td>Permission set</td></tr>
+      <tr><td><code>chown user:group file</code></td><td>Owner/group change</td></tr>
+      <tr><td><code>reboot</code> / <code>shutdown -h now</code></td><td>Restart/shutdown</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Networking</h3>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>ip a</code></td><td>IP addresses</td></tr>
+      <tr><td><code>ip link set eth0 up/down</code></td><td>Interface enable/disable</td></tr>
+      <tr><td><code>nmcli device status</code></td><td>Network connections status</td></tr>
+      <tr><td><code>hostname -I</code></td><td>Server IP</td></tr>
+      <tr><td><code>ssh user@host</code></td><td>Remote login</td></tr>
+      <tr><td><code>scp file user@host:/path</code></td><td>Secure copy</td></tr>
+      <tr><td><code>rsync -avz src dest</code></td><td>Efficient sync/backup</td></tr>
+      <tr><td><code>wget URL</code></td><td>File download</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 5 -->
+<section class="card" id="s5">
+  <h2 class="sec">5. Remote Access & File Transfer <span class="tag both">Windows + Linux</span></h2>
+  <table>
+    <thead><tr><th>Tool/Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>RDP (<code>mstsc</code>)</td><td>Windows remote desktop</td></tr>
+      <tr><td>SSH (<code>ssh user@host</code>)</td><td>Linux/network device remote CLI access</td></tr>
+      <tr><td>PuTTY</td><td>Windows se SSH/Telnet client (GUI)</td></tr>
+      <tr><td>WinSCP</td><td>Windows se SFTP/SCP file transfer (GUI)</td></tr>
+      <tr><td>AnyDesk / TeamViewer</td><td>Cross-platform remote support (end users ke liye)</td></tr>
+      <tr><td>PsExec (Sysinternals)</td><td>Remote command execution bina RDP ke</td></tr>
+      <tr><td><code>robocopy</code></td><td>Windows reliable bulk file copy</td></tr>
+      <tr><td><code>scp</code> / <code>rsync</code></td><td>Linux secure file transfer</td></tr>
+      <tr><td>FileZilla</td><td>FTP/SFTP client (GUI)</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 6 -->
+<section class="card" id="s6">
+  <h2 class="sec">6. Active Directory / Domain Commands <span class="tag win">Windows Server</span></h2>
+  <table>
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>Get-ADUser -Filter *</code></td><td>Sab AD users list</td></tr>
+      <tr><td><code>New-ADUser -Name "John" -SamAccountName john</code></td><td>New user create</td></tr>
+      <tr><td><code>Unlock-ADAccount -Identity john</code></td><td>Locked account unlock</td></tr>
+      <tr><td><code>Set-ADAccountPassword john</code></td><td>Password reset</td></tr>
+      <tr><td><code>Search-ADAccount -LockedOut</code></td><td>Sab locked accounts dhundo</td></tr>
+      <tr><td><code>Get-ADGroupMember "IT Team"</code></td><td>Group members list</td></tr>
+      <tr><td><code>dsquery user -name "John*"</code></td><td>Legacy AD user search</td></tr>
+      <tr><td><code>nltest /dsgetdc:domain.local</code></td><td>Domain controller detect</td></tr>
+      <tr><td><code>repadmin /replsummary</code></td><td>AD replication status check</td></tr>
+      <tr><td><code>dcdiag</code></td><td>Domain controller health check</td></tr>
+      <tr><td><code>gpresult /h report.html</code></td><td>Applied GPOs detailed report</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 7 -->
+<section class="card" id="s7">
+  <h2 class="sec">7. Email / Outlook Troubleshooting</h2>
+  <table>
+    <thead><tr><th>Action</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>Outlook cache repair</td><td>File → Account Settings → Repair</td></tr>
+      <tr><td>Outlook safe mode</td><td><code>outlook.exe /safe</code></td></tr>
+      <tr><td>Reset navigation pane</td><td><code>outlook.exe /resetnavpane</code></td></tr>
+      <tr><td>Test webmail</td><td>Browser mein Outlook Web Access (OWA) open karo</td></tr>
+      <tr><td>Test mail server port</td><td><code>Test-NetConnection smtp.office365.com -Port 587</code></td></tr>
+      <tr><td>DNS MX record check</td><td><code>nslookup -type=MX domain.com</code></td></tr>
+      <tr><td>M365 service health</td><td>Microsoft 365 Admin Center → Service Health</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 8 -->
+<section class="card" id="s8">
+  <h2 class="sec">8. Printer Troubleshooting</h2>
+  <table>
+    <thead><tr><th>Command/Action</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>services.msc</code> → Print Spooler → Restart</td><td>Stuck print jobs clear</td></tr>
+      <tr><td><code>net stop spooler</code> & <code>net start spooler</code></td><td>Spooler restart via CMD</td></tr>
+      <tr><td>Delete files in <code>C:\Windows\System32\spool\PRINTERS</code></td><td>Stuck jobs manually clear (spooler stop karke)</td></tr>
+      <tr><td><code>printui.exe /s</code></td><td>Printer server properties GUI</td></tr>
+      <tr><td><code>ping &lt;printer-IP&gt;</code></td><td>Network printer connectivity check</td></tr>
+      <tr><td>Control Panel → Devices and Printers</td><td>Driver reinstall / add printer</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 9 -->
+<section class="card" id="s9">
+  <h2 class="sec">9. CCTV / Hikvision Commands & Tools <span class="tag cctv">CCTV</span></h2>
+  <table>
+    <thead><tr><th>Tool/Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>SADP Tool</td><td>Hikvision devices discover, IP change, password activate</td></tr>
+      <tr><td>iVMS-4200</td><td>Desktop client — multi-NVR/multi-branch centralized viewing</td></tr>
+      <tr><td>Hik-Connect (mobile app)</td><td>P2P cloud remote viewing, no port forwarding needed</td></tr>
+      <tr><td><code>ping &lt;camera-IP&gt;</code></td><td>Camera reachability test</td></tr>
+      <tr><td><code>arp -a</code></td><td>Camera ka MAC-IP confirm karo agar IP conflict ho</td></tr>
+      <tr><td>Web browser → <code>http://camera-IP</code></td><td>Camera/NVR web configuration interface</td></tr>
+      <tr><td>Port 8000</td><td>Client software connectivity port</td></tr>
+      <tr><td>Port 554</td><td>RTSP streaming port</td></tr>
+      <tr><td>Port 80/443</td><td>Web login port (HTTP/HTTPS)</td></tr>
+      <tr><td><code>Test-NetConnection cameraIP -Port 8000</code></td><td>Camera client port reachability (PowerShell)</td></tr>
+      <tr><td>VLC Media Player (Network Stream)</td><td>RTSP stream test: <code>rtsp://user:pass@camera-IP:554/Streaming/Channels/101</code></td></tr>
+      <tr><td>Batch Configuration Tool (Hikvision)</td><td>Multiple devices ek saath configure/update karne ke liye</td></tr>
+      <tr><td>Firmware upgrade (via SADP/Web GUI)</td><td>Device firmware update karne ke liye</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">CCTV Troubleshooting Order: Power → PoE → Cable → Camera IP (ping) → LAN/Switch → NVR Config → Internet/VPN → Remote App (Hik-Connect)</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 10 -->
+<section class="card" id="s10">
+  <h2 class="sec">10. GUI Diagnostic Tools (Windows)</h2>
+  <table>
+    <thead><tr><th>Tool</th><th>Run Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Task Manager</td><td><code>taskmgr</code> / Ctrl+Shift+Esc</td><td>Process/CPU/RAM/Disk/Network live view</td></tr>
+      <tr><td>Resource Monitor</td><td><code>resmon</code></td><td>Deep resource usage per process</td></tr>
+      <tr><td>Performance Monitor</td><td><code>perfmon</code></td><td>Long-term performance trends/counters</td></tr>
+      <tr><td>Event Viewer</td><td><code>eventvwr.msc</code></td><td>System/Application/Security logs</td></tr>
+      <tr><td>Device Manager</td><td><code>devmgmt.msc</code></td><td>Hardware/driver issues</td></tr>
+      <tr><td>Disk Management</td><td><code>diskmgmt.msc</code></td><td>Partitions/volumes management</td></tr>
+      <tr><td>Services</td><td><code>services.msc</code></td><td>Windows services start/stop/config</td></tr>
+      <tr><td>System Configuration</td><td><code>msconfig</code></td><td>Startup items, boot options</td></tr>
+      <tr><td>Registry Editor</td><td><code>regedit</code></td><td>Registry direct edit (careful use)</td></tr>
+      <tr><td>Group Policy Editor</td><td><code>gpedit.msc</code></td><td>Local policy config (Pro/Enterprise only)</td></tr>
+      <tr><td>Network Connections</td><td><code>ncpa.cpl</code></td><td>Adapters directly access</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 11 -->
+<section class="card" id="s11">
+  <h2 class="sec">11. Essential Third-Party Tools</h2>
+  <table>
+    <thead><tr><th>Tool</th><th>Use Case</th></tr></thead>
+    <tbody>
+      <tr><td>Advanced IP Scanner / Angry IP Scanner</td><td>Network mein sab devices discover karna</td></tr>
+      <tr><td>Wireshark</td><td>Packet capture/deep network analysis</td></tr>
+      <tr><td>PuTTY</td><td>SSH/Telnet/Serial client</td></tr>
+      <tr><td>WinSCP / FileZilla</td><td>SFTP/FTP file transfer</td></tr>
+      <tr><td>AnyDesk / TeamViewer</td><td>Remote support</td></tr>
+      <tr><td>Sysinternals Suite (PsExec, Process Explorer, Autoruns)</td><td>Advanced Windows diagnostics</td></tr>
+      <tr><td>CCleaner</td><td>Junk file cleanup, startup management</td></tr>
+      <tr><td>SADP Tool + iVMS-4200</td><td>Hikvision CCTV management</td></tr>
+      <tr><td>Speedtest CLI / Ookla</td><td>Internet speed testing</td></tr>
+      <tr><td>Fing (mobile)</td><td>Quick network scan from phone</td></tr>
+      <tr><td>CrystalDiskInfo</td><td>HDD/SSD health monitoring</td></tr>
+      <tr><td>MRemoteNG</td><td>Multiple RDP/SSH sessions ek jagah manage karna</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 12 -->
+<section class="card" id="s12">
+  <h2 class="sec">12. Troubleshooting Flowcharts (Quick Logic)</h2>
+  <h3 class="label">"No Internet" Complaint</h3>
+  <div class="flow">Physical cable/Wi-Fi → ipconfig (IP mila?) → ping gateway → ping 8.8.8.8 → nslookup google.com → browser test</div>
+  <h3 class="label">"Computer Slow"</h3>
+  <div class="flow">Task Manager (CPU/RAM/Disk) → Startup apps → Malware scan → Event Viewer logs → Disk health (chkdsk) → Hardware check</div>
+  <h3 class="label">"Can't Access Server/Application"</h3>
+  <div class="flow">ping server IP → telnet/Test-NetConnection port → check VPN/firewall/ACL → check service status on server → check application logs</div>
+  <h3 class="label">"Camera Offline"</h3>
+  <div class="flow">Power/PoE check → cable check → ping camera IP → check IP conflict (arp) → NVR camera management page → check NVR network/VPN</div>
+  <h3 class="label">"Email Not Working"</h3>
+  <div class="flow">Internet check → webmail test → Outlook profile/account → MFA/password → DNS MX record → M365 service health</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 13 -->
+<section class="card" id="s13">
+  <h2 class="sec">13. Master Command Table (All-in-One Quick Reference)</h2>
+  <table>
+    <thead><tr><th>Task</th><th>Windows</th><th>Linux</th></tr></thead>
+    <tbody>
+      <tr><td>IP config</td><td><code>ipconfig /all</code></td><td><code>ip a</code></td></tr>
+      <tr><td>Ping</td><td><code>ping host</code></td><td><code>ping host</code></td></tr>
+      <tr><td>Trace route</td><td><code>tracert host</code></td><td><code>traceroute host</code></td></tr>
+      <tr><td>DNS lookup</td><td><code>nslookup domain</code></td><td><code>dig domain</code></td></tr>
+      <tr><td>Open ports/connections</td><td><code>netstat -ano</code></td><td><code>ss -tulnp</code></td></tr>
+      <tr><td>Port test</td><td><code>Test-NetConnection host -Port x</code></td><td><code>nc -zv host port</code></td></tr>
+      <tr><td>Process list</td><td><code>tasklist</code></td><td><code>ps aux</code></td></tr>
+      <tr><td>Kill process</td><td><code>taskkill /PID x /F</code></td><td><code>kill -9 PID</code></td></tr>
+      <tr><td>Live resource monitor</td><td><code>taskmgr</code> / <code>resmon</code></td><td><code>top</code> / <code>htop</code></td></tr>
+      <tr><td>Disk usage</td><td><code>chkdsk</code></td><td><code>df -h</code></td></tr>
+      <tr><td>Service restart</td><td><code>Restart-Service NAME</code></td><td><code>systemctl restart NAME</code></td></tr>
+      <tr><td>User create</td><td><code>net user NAME PASS /add</code></td><td><code>useradd -m NAME</code></td></tr>
+      <tr><td>Remote login</td><td><code>mstsc</code> / <code>Enter-PSSession</code></td><td><code>ssh user@host</code></td></tr>
+      <tr><td>File copy remote</td><td><code>robocopy</code></td><td><code>scp</code> / <code>rsync</code></td></tr>
+      <tr><td>Logs</td><td><code>eventvwr.msc</code></td><td><code>journalctl</code> / <code>tail -f</code></td></tr>
+      <tr><td>File permission</td><td><code>icacls</code></td><td><code>chmod</code> / <code>chown</code></td></tr>
+      <tr><td>System info</td><td><code>systeminfo</code></td><td><code>uname -a</code></td></tr>
+      <tr><td>Reboot</td><td><code>shutdown /r /t 0</code></td><td><code>reboot</code></td></tr>
+      <tr><td>System file repair</td><td><code>sfc /scannow</code></td><td>—</td></tr>
+      <tr><td>Network stack reset</td><td><code>netsh winsock reset</code></td><td>—</td></tr>
+      <tr><td>CCTV device discovery</td><td colspan="2">SADP Tool</td></tr>
+      <tr><td>CCTV centralized viewing</td><td colspan="2">iVMS-4200</td></tr>
+      <tr><td>CCTV remote (no port forward)</td><td colspan="2">Hik-Connect app</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">🎯 Golden Rule: Jo bhi problem ho — pehle scope pata karo (ek device ya sab), phir layer by layer troubleshoot karo: Power → Physical → IP → Service → Application. Aur har fix ke baad verify zaroor karo.</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<footer>All-in-One Technical Support Commands & Tools · Practice karo, confident bano! 🧰</footer>
+</div>
+</body>
+</html>
