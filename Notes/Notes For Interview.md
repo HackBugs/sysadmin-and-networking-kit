@@ -58,9 +58,8 @@ IT Technical Interview Questions – Gulf Horses
 <hr>
 
 
-# GULF HORSES – IT TECHNICAL INTERVIEW
-
-## COMPLETE REVISION NOTES — Q1 to Q12
+> # GULF HORSES – IT TECHNICAL INTERVIEW
+> ## COMPLETE REVISION NOTES — Q1 to Q12
 
 ---
 
