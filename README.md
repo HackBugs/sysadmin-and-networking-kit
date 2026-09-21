@@ -1,7 +1,3 @@
-Bilkul — README ko ek **clean dashboard-style sysadmin toolkit** jaisa bana sakte hain. Aapke diye hue Packet Tracer section ko maine structured cards/grid style mein organize kiya hai.
-
- sysadmin-kit README
-
 # 🛠️ sysadmin-kit
 
  > A practical collection of tools, software, labs, and resources for **System Administration, Networking, CCTV & IT Infrastructure**.
