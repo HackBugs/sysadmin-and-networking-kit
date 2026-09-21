@@ -10,4 +10,9 @@ Mujhe [TOPIC NAME] ke liye ek "Revision Notes" webpage banao jisme:
 3. End mein ek "Fast Revision Sheet" ho — sab keywords ek jagah short form mein
 4. Hinglish mein samjhao, lekin technical/interview answers English mein ho
 5. Ise HTML file bana ke publish karo taaki main click kar ke navigate kar sakoon, aur download bhi kar sakoon
+
+🔖 "Dark mode support bhi rakhna"
+📊 "Beech mein ek diagram/flowchart bhi daal do"
+🧠 "End mein ek quiz bhi bana do isi topic pe practice ke liye" (quiz card use ho sakta hai)
+📱 "Mobile-friendly rakhna" (already default hota hai)
 ```
