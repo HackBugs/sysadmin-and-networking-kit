@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CCTV Installation & Configuration Complete Guide</title>
+<style>
+  :root {
+    --bg: #101418; --card-bg: #171c22; --text: #e8ecf1; --muted: #9aa5b1;
+    --accent: #f2a33d; --accent-soft: #2a2418; --border: #262c34;
+    --code-bg: #1d232b; --shadow: rgba(0,0,0,0.4);
+    box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f7f5; --card-bg: #ffffff; --text: #1c1c1c; --muted: #62666c;
+    --accent: #b5670e; --accent-soft: #fbeed9; --border: #e7e3da;
+    --code-bg: #f2ede2; --shadow: rgba(30,20,0,0.08);
+  }
+  html { scroll-padding-top: 80px; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.6; }
+  header.top { position:sticky; top:0; top:env(safe-area-inset-top,0px); z-index:20; background:var(--card-bg); border-bottom:1px solid var(--border); padding:14px 20px calc(14px + env(safe-area-inset-top,0px)); box-shadow:0 2px 10px var(--shadow); }
+  header.top h1 { margin:0; font-size:1.05rem; color:var(--accent); }
+  header.top p { margin:2px 0 0; font-size:0.8rem; color:var(--muted); }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 16px 80px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:20px 20px 24px; margin-bottom:20px; box-shadow:0 2px 10px var(--shadow); }
+  .index-list { list-style:none; padding:0; margin:12px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:480px) { .index-list { grid-template-columns:1fr; } }
+  .index-list a { display:block; padding:10px 12px; border-radius:10px; background:var(--accent-soft); color:var(--text); text-decoration:none; font-size:0.9rem; border:1px solid transparent; }
+  .index-list a:hover { border-color:var(--accent); }
+  .index-list .num { color:var(--accent); font-weight:700; margin-right:6px; }
+  h2.sec { color:var(--accent); border-bottom:2px solid var(--accent-soft); padding-bottom:8px; margin-top:0; font-size:1.1rem; scroll-margin-top:80px; }
+  h3 { font-size:0.95rem; margin:16px 0 6px; color:var(--text); }
+  h3.label { text-transform:uppercase; letter-spacing:.04em; font-size:0.75rem; color:var(--muted); margin:18px 0 6px; font-weight:700; }
+  p { margin:6px 0; }
+  ul,ol { margin:6px 0; padding-left:22px; } li{ margin:3px 0; }
+  code { background:var(--code-bg); padding:2px 7px; border-radius:6px; font-size:0.86em; font-family:"SFMono-Regular",Consolas,Menlo,monospace; color:var(--accent); }
+  pre { background:var(--code-bg); padding:12px 14px; border-radius:10px; overflow-x:auto; font-size:0.84rem; font-family:"SFMono-Regular",Consolas,Menlo,monospace; margin:8px 0; }
+  .flow { background:var(--code-bg); border-left:3px solid var(--accent); padding:10px 14px; border-radius:8px; font-weight:600; font-size:0.9rem; margin:10px 0; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85rem; display:block; overflow-x:auto; white-space:nowrap; }
+  table thead { background:var(--accent-soft); }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+  th { color:var(--accent); font-weight:700; }
+  .remember { background:var(--code-bg); border:1px dashed var(--accent); border-radius:10px; padding:10px 14px; margin:10px 0; font-weight:700; font-size:0.88rem; }
+  .answer-box { background:var(--accent-soft); border-radius:10px; padding:14px 16px; margin:8px 0; font-style:italic; font-size:0.92rem; }
+  .backtop { display:inline-block; margin-top:14px; font-size:0.8rem; color:var(--accent); text-decoration:none; border:1px solid var(--border); padding:5px 12px; border-radius:20px; }
+  hr.sep { border:none; border-top:1px solid var(--border); margin:24px 0; }
+  footer { text-align:center; color:var(--muted); font-size:0.8rem; padding:18px 0 10px; }
+  .steps { list-style:none; padding:0; counter-reset:st; }
+  .steps li { counter-increment:st; position:relative; padding:8px 10px 8px 34px; margin-bottom:6px; background:var(--code-bg); border-radius:8px; }
+  .steps li::before { content:counter(st); position:absolute; left:8px; top:6px; font-weight:800; color:var(--accent); }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>📹 CCTV Installation & Configuration Complete Guide</h1>
+  <p>Planning se Remote Viewing tak — sab kuch ek jagah (Hikvision-focused)</p>
+</header>
+<div class="wrap">
+
+<section class="card" id="top">
+  <h2 class="sec">📌 Index</h2>
+  <ul class="index-list">
+    <li><a href="#s1"><span class="num">1.</span>CCTV System Components</a></li>
+    <li><a href="#s2"><span class="num">2.</span>Camera Types & Selection</a></li>
+    <li><a href="#s3"><span class="num">3.</span>Cabling & Power (Coax/PoE)</a></li>
+    <li><a href="#s4"><span class="num">4.</span>Camera Placement Best Practices</a></li>
+    <li><a href="#s5"><span class="num">5.</span>NVR/DVR Installation</a></li>
+    <li><a href="#s6"><span class="num">6.</span>Network & IP Setup</a></li>
+    <li><a href="#s7"><span class="num">7.</span>Hikvision Config (SADP, Web GUI)</a></li>
+    <li><a href="#s8"><span class="num">8.</span>Recording & Storage Calculation</a></li>
+    <li><a href="#s9"><span class="num">9.</span>Remote Viewing & Port Forwarding</a></li>
+    <li><a href="#s10"><span class="num">10.</span>Users, Permissions & Motion Alerts</a></li>
+    <li><a href="#s11"><span class="num">11.</span>Multi-Branch Centralized Monitoring</a></li>
+    <li><a href="#s12"><span class="num">12.</span>Maintenance Checklist</a></li>
+    <li><a href="#s13"><span class="num">13.</span>Troubleshooting Guide</a></li>
+    <li><a href="#s14"><span class="num">14.</span>Full Quick Reference Sheet</a></li>
+  </ul>
+</section>
+
+<!-- 1 -->
+<section class="card" id="s1">
+  <h2 class="sec">1. CCTV System Components</h2>
+  <table>
+    <thead><tr><th>Component</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Camera (IP/Analog)</td><td>Video capture karta hai</td></tr>
+      <tr><td>NVR (Network Video Recorder)</td><td>IP cameras ke liye recording device</td></tr>
+      <tr><td>DVR (Digital Video Recorder)</td><td>Analog/HD-TVI cameras ke liye recording device</td></tr>
+      <tr><td>PoE Switch</td><td>IP cameras ko ek hi cable se power + data deta hai</td></tr>
+      <tr><td>HDD (Surveillance-grade)</td><td>24/7 recording ke liye designed hard disk (e.g. WD Purple, Seagate SkyHawk)</td></tr>
+      <tr><td>Monitor</td><td>Live view/playback dekhne ke liye</td></tr>
+      <tr><td>VMS (Video Management Software)</td><td>Hikvision iVMS-4200, multiple NVRs centrally manage karne ke liye</td></tr>
+      <tr><td>UPS</td><td>Power backup — recording continuous rakhta hai</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">System Types</h3>
+  <ul>
+    <li><b>Analog (HD-TVI/AHD/CVI)</b> — coax cable (RG59), DVR ke saath</li>
+    <li><b>IP (Network) CCTV</b> — Cat5e/Cat6 cable, PoE, NVR ke saath — better quality, remote scalability</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 2 -->
+<section class="card" id="s2">
+  <h2 class="sec">2. Camera Types & Selection</h2>
+  <table>
+    <thead><tr><th>Type</th><th>Best Use Case</th></tr></thead>
+    <tbody>
+      <tr><td>Dome Camera</td><td>Indoor, discreet, vandal-resistant options available</td></tr>
+      <tr><td>Bullet Camera</td><td>Outdoor, long-range visible deterrent</td></tr>
+      <tr><td>PTZ (Pan-Tilt-Zoom)</td><td>Large areas, active monitoring, zoom-in on events</td></tr>
+      <tr><td>Turret Camera</td><td>Indoor/outdoor, better angle than dome, no IR reflection issue</td></tr>
+      <tr><td>Fisheye/Panoramic</td><td>360° coverage — malls, large halls</td></tr>
+      <tr><td>Thermal Camera</td><td>Low-light/no-light perimeter security</td></tr>
+      <tr><td>ANPR Camera</td><td>Vehicle number plate recognition — gate/parking</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Key Specs to Consider</h3>
+  <ul>
+    <li><b>Resolution:</b> 2MP (1080p) minimum, 4MP/8MP (4K) for detail-critical areas</li>
+    <li><b>IR Range:</b> Night vision distance (e.g. 30m, 50m)</li>
+    <li><b>IP Rating:</b> IP66/IP67 for outdoor weatherproofing</li>
+    <li><b>Lens (Focal Length):</b> Wide angle (2.8mm) vs zoomed (8mm+)</li>
+    <li><b>WDR (Wide Dynamic Range):</b> Backlight/high-contrast scenes ke liye</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 3 -->
+<section class="card" id="s3">
+  <h2 class="sec">3. Cabling & Power</h2>
+  <h3 class="label">IP Camera (PoE) Cabling</h3>
+  <ul>
+    <li>Cable: <b>Cat5e / Cat6 UTP</b> — max run <b>100 meters</b> per segment</li>
+    <li>PoE Standards: <code>802.3af</code> (15.4W), <code>802.3at</code> (PoE+, 30W), <code>802.3bt</code> (PoE++, 60-90W for PTZ)</li>
+    <li>100m se zyada distance ke liye: PoE extender/repeater ya fiber + media converter use karo</li>
+  </ul>
+  <h3 class="label">Analog Camera (Coax) Cabling</h3>
+  <ul>
+    <li>Cable: <b>RG59 Siamese</b> (video + power combined)</li>
+    <li>Max run: ~300m (RG59), better with RG6</li>
+    <li>Separate 12V DC power supply required (ya centralized power box)</li>
+  </ul>
+  <h3 class="label">Best Practices</h3>
+  <ul>
+    <li>Cable ko conduit/trunking mein daalo — weather aur physical damage se bachao</li>
+    <li>Power cables se electrical interference avoid karne ke liye alag route rakho</li>
+    <li>Outdoor connections ko waterproof connectors/junction box se seal karo</li>
+    <li>Surge protector lagao lightning-prone areas mein</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 4 -->
+<section class="card" id="s4">
+  <h2 class="sec">4. Camera Placement Best Practices</h2>
+  <ol class="steps">
+    <li>Entry/exit points, cash counters, parking, perimeter — high-priority areas identify karo</li>
+    <li>Camera height: 2.5–3m (indoor), 3–4m (outdoor) — tampering se bachne ke liye</li>
+    <li>Direct sunlight/strong backlight camera ke saamne avoid karo (WDR camera use karo agar zaroori ho)</li>
+    <li>Overlap coverage rakho blind spots avoid karne ke liye</li>
+    <li>Entry points par face-level angle rakho (identification ke liye), overview ke liye wide angle</li>
+    <li>IR cameras ke liye — glass/reflective surface ke bahut close mat lagao (IR reflection issue)</li>
+  </ol>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 5 -->
+<section class="card" id="s5">
+  <h2 class="sec">5. NVR/DVR Installation</h2>
+  <h3 class="label">Initial Setup Steps (Hikvision NVR)</h3>
+  <ol class="steps">
+    <li>HDD install karo NVR ke andar (SATA connect + screw mount)</li>
+    <li>Monitor + mouse connect karo (HDMI/VGA)</li>
+    <li>Power on — first-time wizard start hoga</li>
+    <li>Admin password set karo (strong password — default password kabhi mat rakho)</li>
+    <li>Date/Time zone set karo (NTP sync recommended)</li>
+    <li>HDD ko "Init/Format" karo agar naya hai</li>
+    <li>Cameras auto-detect honge (PoE ports mein connect hone par) — ya manually "Add Camera" se add karo</li>
+    <li>Recording schedule set karo (continuous / motion-based / schedule-based)</li>
+    <li>Network settings configure karo (IP, gateway, DNS)</li>
+  </ol>
+  <h3 class="label">Recording Modes</h3>
+  <table>
+    <thead><tr><th>Mode</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>Continuous</td><td>24/7 recording — sabse zyada storage use karta hai</td></tr>
+      <tr><td>Motion Detection</td><td>Sirf movement detect hone par record</td></tr>
+      <tr><td>Event/Alarm-based</td><td>Sensor/line-crossing/intrusion trigger par record</td></tr>
+      <tr><td>Scheduled</td><td>Specific time slots mein record (e.g. office hours ke baad)</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 6 -->
+<section class="card" id="s6">
+  <h2 class="sec">6. Network & IP Setup</h2>
+  <h3 class="label">IP Camera / NVR Networking</h3>
+  <ul>
+    <li>Har camera aur NVR ko ek dedicated <b>VLAN</b> mein rakho (office traffic se separate) — bandwidth aur security dono behtar</li>
+    <li>Static IP recommended cameras/NVR ke liye (DHCP se IP change ho sakta hai, connection break ho sakta hai)</li>
+    <li>Example scheme: NVR → <code>192.168.50.1</code>, Cameras → <code>192.168.50.101–150</code></li>
+  </ul>
+  <h3 class="label">Bandwidth Estimation (per camera, approx.)</h3>
+  <table>
+    <thead><tr><th>Resolution</th><th>Bitrate (H.264)</th><th>Bitrate (H.265)</th></tr></thead>
+    <tbody>
+      <tr><td>1080p (2MP)</td><td>~4 Mbps</td><td>~2 Mbps</td></tr>
+      <tr><td>4MP</td><td>~6 Mbps</td><td>~3 Mbps</td></tr>
+      <tr><td>4K (8MP)</td><td>~12-16 Mbps</td><td>~6-8 Mbps</td></tr>
+    </tbody>
+  </table>
+  <p>H.265+ codec use karo — bandwidth aur storage dono kam karta hai bina quality loss ke.</p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 7 -->
+<section class="card" id="s7">
+  <h2 class="sec">7. Hikvision Configuration</h2>
+  <h3 class="label">SADP Tool (Camera/NVR Discovery)</h3>
+  <p>SADP (Search Active Device Protocol) tool se network mein sab Hikvision devices detect hote hain — IP change, activation, aur password reset ke liye use hota hai.</p>
+  <ol class="steps">
+    <li>SADP tool install/open karo (Windows PC par)</li>
+    <li>Device list mein sab connected Hikvision devices dikhenge</li>
+    <li>Inactive device select karo → password activate karo</li>
+    <li>IP address, subnet mask, gateway modify kar sakte ho seedha SADP se</li>
+  </ol>
+  <h3 class="label">Default Access</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>Default IP (camera)</td><td>192.168.1.64 (typical, model-dependent)</td></tr>
+      <tr><td>Web login port</td><td>80 (HTTP)</td></tr>
+      <tr><td>HTTPS port</td><td>443</td></tr>
+      <tr><td>Client software port</td><td>8000</td></tr>
+      <tr><td>RTSP port (streaming)</td><td>554</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Web Interface Configuration Path</h3>
+  <ul>
+    <li><b>Configuration → Network → Basic Settings</b> — IP/DNS set</li>
+    <li><b>Configuration → Video/Audio</b> — resolution, bitrate, frame rate</li>
+    <li><b>Configuration → Storage → Schedule</b> — recording schedule</li>
+    <li><b>Configuration → Event → Motion Detection</b> — sensitivity, detection area</li>
+    <li><b>Configuration → User Management</b> — operator/viewer accounts add karo</li>
+  </ul>
+  <h3 class="label">Adding Camera to NVR (via Web GUI)</h3>
+  <p><b>Configuration → Camera → Camera Management → Add</b> — camera IP, port (8000), username/password enter karo, ya "Add Online Device" se auto-detected list se select karo.</p>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 8 -->
+<section class="card" id="s8">
+  <h2 class="sec">8. Recording & Storage Calculation</h2>
+  <h3 class="label">Basic Formula</h3>
+  <div class="flow">Storage (GB) = Bitrate (Mbps) × 3600 × 24 × Days ÷ 8 ÷ 1024 × Number of Cameras</div>
+  <h3 class="label">Example — Quick Reference (per camera, 24/7, H.265)</h3>
+  <table>
+    <thead><tr><th>Resolution</th><th>Approx. Storage/Day</th><th>Storage for 30 Days</th></tr></thead>
+    <tbody>
+      <tr><td>1080p (2MP)</td><td>~20 GB</td><td>~600 GB</td></tr>
+      <tr><td>4MP</td><td>~30 GB</td><td>~900 GB</td></tr>
+      <tr><td>4K (8MP)</td><td>~60-80 GB</td><td>~1.8-2.4 TB</td></tr>
+    </tbody>
+  </table>
+  <p><i>Note: Motion-detection recording se storage requirement kaafi kam ho jata hai (30-70% tak reduce ho sakta hai).</i></p>
+  <h3 class="label">RAID for NVR (Enterprise Setup)</h3>
+  <table>
+    <thead><tr><th>RAID Level</th><th>Benefit</th></tr></thead>
+    <tbody>
+      <tr><td>RAID 0</td><td>Speed, no redundancy (risky for CCTV)</td></tr>
+      <tr><td>RAID 1</td><td>Mirroring — 1 disk fail ho to bhi data safe</td></tr>
+      <tr><td>RAID 5</td><td>Balance of storage + redundancy (min 3 disks)</td></tr>
+      <tr><td>RAID 6</td><td>2 disks fail hone par bhi data safe (min 4 disks)</td></tr>
+    </tbody>
+  </table>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 9 -->
+<section class="card" id="s9">
+  <h2 class="sec">9. Remote Viewing & Port Forwarding</h2>
+  <h3 class="label">Option 1 — Hik-Connect / P2P (Easiest, no port forwarding needed)</h3>
+  <ol class="steps">
+    <li>NVR settings mein Hik-Connect (P2P) enable karo</li>
+    <li>QR code scan karo mobile app (Hik-Connect) se</li>
+    <li>Device serial number + verification code register karo</li>
+    <li>Cloud ke through remote access mil jaata hai bina router config ke</li>
+  </ol>
+  <h3 class="label">Option 2 — Port Forwarding (Static IP / DDNS)</h3>
+  <table>
+    <thead><tr><th>Port</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>80</td><td>HTTP web access</td></tr>
+      <tr><td>8000</td><td>Client software (iVMS-4200) access</td></tr>
+      <tr><td>554</td><td>RTSP video streaming</td></tr>
+    </tbody>
+  </table>
+  <ol class="steps">
+    <li>Router mein port forwarding rule add karo (external port → NVR internal IP:port)</li>
+    <li>Agar dynamic public IP hai to DDNS (No-IP, DynDNS, ya Hikvision's own DDNS) setup karo</li>
+    <li>NVR mein DDNS enable karo: <b>Configuration → Network → DDNS</b></li>
+    <li>Firewall par sirf required ports allow karo — poora range open mat karo</li>
+  </ol>
+  <div class="remember">Security Tip: Default ports change kar do (e.g. 8000 → 28000) — random bot scans se bachne ke liye.</div>
+  <h3 class="label">Mobile/Client Apps</h3>
+  <ul>
+    <li><b>Hik-Connect</b> — mobile app, cloud P2P</li>
+    <li><b>iVMS-4200</b> — desktop client, multi-site professional management</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 10 -->
+<section class="card" id="s10">
+  <h2 class="sec">10. Users, Permissions & Motion Alerts</h2>
+  <h3 class="label">User Roles</h3>
+  <table>
+    <thead><tr><th>Role</th><th>Access</th></tr></thead>
+    <tbody>
+      <tr><td>Administrator</td><td>Full control — settings, users, storage, network</td></tr>
+      <tr><td>Operator</td><td>Live view, playback, PTZ control — settings change nahi</td></tr>
+      <tr><td>Viewer/Guest</td><td>Sirf live view — playback/export nahi</td></tr>
+    </tbody>
+  </table>
+  <h3 class="label">Motion Detection Setup</h3>
+  <ol class="steps">
+    <li><b>Configuration → Event → Basic Event → Motion Detection</b> mein jao</li>
+    <li>Detection area draw karo (grid select) — jahan motion detect karna hai</li>
+    <li>Sensitivity level set karo (zyada high se false alerts badh sakte hain)</li>
+    <li>Linkage action set karo: recording start, email alert, buzzer, app notification</li>
+    <li>Schedule set karo (kab-kab motion detection active rahe)</li>
+  </ol>
+  <h3 class="label">Advanced Analytics (supported models)</h3>
+  <ul>
+    <li><b>Line Crossing Detection</b> — defined line cross karne par alert</li>
+    <li><b>Intrusion Detection</b> — defined zone mein entry par alert</li>
+    <li><b>Face Detection/Recognition</b> — identification/counting</li>
+    <li><b>People Counting</b> — footfall analysis</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 11 -->
+<section class="card" id="s11">
+  <h2 class="sec">11. Multi-Branch Centralized Monitoring</h2>
+  <p>Multiple branches ke CCTV ko Head Office se centrally monitor karne ke liye:</p>
+  <ol class="steps">
+    <li>Har branch ka NVR site-to-site VPN ya dedicated link se HQ network se connected ho</li>
+    <li>HQ par <b>iVMS-4200</b> (ya Hik-Central) install karo</li>
+    <li>Har branch ke NVR ko client software mein add karo (device IP, port 8000, credentials)</li>
+    <li>Sab cameras ek hi dashboard se monitor ho sakte hain (live view + playback)</li>
+    <li>Bandwidth planning zaroori hai — HQ se multiple branches ki live streams dekhna bandwidth-heavy ho sakta hai (sub-stream use karo monitoring ke liye, main-stream sirf recording ke liye)</li>
+  </ol>
+  <div class="remember">Tip: Live monitoring ke liye "sub-stream" (lower resolution) use karo — bandwidth bachega, recording "main-stream" (full resolution) mein continue rahegi.</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 12 -->
+<section class="card" id="s12">
+  <h2 class="sec">12. Maintenance Checklist</h2>
+  <h3 class="label">Weekly</h3>
+  <ul>
+    <li>Sab cameras live view check karo (koi offline/blur/dark to nahi)</li>
+    <li>Recording status verify karo (koi gap to nahi)</li>
+  </ul>
+  <h3 class="label">Monthly</h3>
+  <ul>
+    <li>Camera lens clean karo (dust/cobweb, especially outdoor)</li>
+    <li>HDD health check karo (S.M.A.R.T. status)</li>
+    <li>Storage space verify karo (retention period maintain ho raha hai ya nahi)</li>
+    <li>Firmware update check karo</li>
+  </ul>
+  <h3 class="label">Quarterly/Yearly</h3>
+  <ul>
+    <li>Cable connections check karo (corrosion, loose connectors especially outdoor)</li>
+    <li>PoE switch health check karo</li>
+    <li>Password rotation / security audit</li>
+    <li>UPS battery health check</li>
+  </ul>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 13 -->
+<section class="card" id="s13">
+  <h2 class="sec">13. Troubleshooting Guide</h2>
+  <table>
+    <thead><tr><th>Problem</th><th>Likely Cause & Fix</th></tr></thead>
+    <tbody>
+      <tr><td>Camera offline on NVR</td><td>Check power/PoE, cable, camera IP, ping camera IP from NVR network</td></tr>
+      <tr><td>No video / black screen</td><td>Camera cable, lens cap, night mode stuck, or camera hardware fault</td></tr>
+      <tr><td>Blurry/out-of-focus image</td><td>Lens dirty, focus ring adjust, condensation inside housing</td></tr>
+      <tr><td>Recording gaps</td><td>HDD full/failing, recording schedule misconfigured, check HDD health</td></tr>
+      <tr><td>Remote access not working</td><td>Check internet, port forwarding, DDNS status, Hik-Connect status on NVR</td></tr>
+      <tr><td>Too many false motion alerts</td><td>Reduce sensitivity, adjust detection area (exclude trees/road), enable smart detection</td></tr>
+      <tr><td>NVR not detecting new camera</td><td>Check camera IP is on same subnet, correct port (8000), correct credentials, PoE providing power</td></tr>
+      <tr><td>Night vision not working</td><td>IR LEDs faulty, IR cut filter stuck, bright light nearby confusing sensor</td></tr>
+      <tr><td>All cameras from one branch down</td><td>Branch PoE switch/router/internet/VPN issue — check upstream network first</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">Troubleshooting Order: Power → Cable/PoE → Camera IP → LAN → NVR Config → Internet/VPN → Remote Access</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<!-- 14 -->
+<section class="card" id="s14">
+  <h2 class="sec">14. Full Quick Reference Sheet</h2>
+  <table>
+    <thead><tr><th>Item</th><th>Value/Note</th></tr></thead>
+    <tbody>
+      <tr><td>PoE cable max length</td><td>100m (Cat5e/Cat6)</td></tr>
+      <tr><td>Coax cable max length</td><td>~300m (RG59)</td></tr>
+      <tr><td>Camera install height</td><td>2.5-4m</td></tr>
+      <tr><td>Default HTTP port</td><td>80</td></tr>
+      <tr><td>Default client port</td><td>8000</td></tr>
+      <tr><td>RTSP port</td><td>554</td></tr>
+      <tr><td>HTTPS port</td><td>443</td></tr>
+      <tr><td>Discovery tool</td><td>SADP Tool</td></tr>
+      <tr><td>Mobile app</td><td>Hik-Connect</td></tr>
+      <tr><td>Desktop client</td><td>iVMS-4200</td></tr>
+      <tr><td>Codec (recommended)</td><td>H.265+ (bandwidth/storage efficient)</td></tr>
+      <tr><td>Recommended HDD</td><td>Surveillance-grade (WD Purple / Seagate SkyHawk)</td></tr>
+      <tr><td>Backup rule</td><td>3-2-1 (3 copies, 2 media, 1 offsite)</td></tr>
+      <tr><td>RAID for redundancy</td><td>RAID 5 / RAID 6</td></tr>
+    </tbody>
+  </table>
+  <div class="remember">🎯 Golden Rule: Installation se pehle planning (coverage + bandwidth + storage) karo, aur default passwords hamesha change karo — CCTV systems bhi cyber attack ka target ban sakte hain.</div>
+  <a class="backtop" href="#top">↑ Index</a>
+</section>
+
+<footer>CCTV Installation & Configuration Complete Guide · Stay secure! 📹</footer>
+</div>
+</body>
+</html>
