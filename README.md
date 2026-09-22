@@ -1,4 +1,4 @@
-# 🛠️ sysadmin-kit
+# 🛠️ sysadmin-kit - [Use for notes](https://docs.craft.do/)
 
  > A practical collection of tools, software, labs, and resources for **System Administration, Networking, CCTV & IT Infrastructure**.
 
