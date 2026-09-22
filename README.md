@@ -25,7 +25,8 @@
 
  Visit Cisco Networking Academy:
 
- **https://www.netacad.com/**  [Download - Cisco Packet Tracer](https://skillsforall.com/resources/lab-downloads)
+ **https://www.netacad.com/**  
+ - [Download - Cisco Packet Tracer](https://skillsforall.com/resources/lab-downloads)
 
  ### 📚 Find Packet Tracer
 
