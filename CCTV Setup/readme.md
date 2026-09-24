@@ -1,5 +1,5 @@
 ### [YouTube Practice Video](https://youtu.be/zBqU5gF_duo?si=JYHUKKNGKYgiPYON)
-> Note - To enable a Wireless Distribution System (WDS) bridge and extend your Wi-Fi network, log in to your secondary router's web management page and configure the wireless and LAN settings
+> Note (connect to router each other) - To enable a Wireless Distribution System (WDS) bridge and extend your Wi-Fi network, log in to your secondary router's web management page and configure the wireless and LAN settings
 
 <hr>
 
