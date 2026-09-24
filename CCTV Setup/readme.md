@@ -1,4 +1,4 @@
-### YouTube Practice Video [link - 1](https://youtu.be/zBqU5gF_duo?si=JYHUKKNGKYgiPYON) - [link - 2](https://youtu.be/3nBdUrXOiIM?si=8grpwoA6XtheUVWY) - [link -3](https://youtu.be/wKiYaiCYDWs?si=CpgMCuK58TOq27-L)
+### YouTube Practice Video [link - 1](https://youtu.be/zBqU5gF_duo?si=JYHUKKNGKYgiPYON) - [link - 2](https://youtu.be/3nBdUrXOiIM?si=8grpwoA6XtheUVWY) - [link -3 - Switch types](https://youtu.be/wKiYaiCYDWs?si=CpgMCuK58TOq27-L)
 > Note (connect two router each other) - To enable a Wireless Distribution System (WDS) bridge and extend your Wi-Fi network, log in to your secondary router's web management page and configure the wireless and LAN settings
 
 <hr>
